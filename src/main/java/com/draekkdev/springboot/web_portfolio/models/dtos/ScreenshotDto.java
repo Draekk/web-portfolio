@@ -1,5 +1,7 @@
 package com.draekkdev.springboot.web_portfolio.models.dtos;
 
+import com.draekkdev.springboot.web_portfolio.entities.Screenshot;
+
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -20,4 +22,9 @@ public class ScreenshotDto {
     private String url;
 
     private ProjectDto project;
+
+    public ScreenshotDto(Screenshot screenshot) {
+        id = screenshot.getId();
+        url = screenshot.getUrl();
+    }
 }
