@@ -64,8 +64,12 @@ public class ScreenshotServiceImpl implements ScreenshotService {
 
     @Override
     public void deleteScreenshotById(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteScreenshotById'");
+        try {
+            repository.deleteById(id.longValue());
+            
+        } catch (CustomException e) {
+            throw e;
+        }
     }
 
 }
