@@ -1,12 +1,14 @@
 package com.draekkdev.springboot.web_portfolio.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.draekkdev.springboot.web_portfolio.entities.Screenshot;
 import com.draekkdev.springboot.web_portfolio.errors.CustomException;
+import com.draekkdev.springboot.web_portfolio.errors.ErrorMessages;
 import com.draekkdev.springboot.web_portfolio.models.dtos.ScreenshotDto;
 import com.draekkdev.springboot.web_portfolio.repositories.ScreenshotRepository;
 
@@ -32,8 +34,16 @@ public class ScreenshotServiceImpl implements ScreenshotService {
 
     @Override
     public List<ScreenshotDto> findAllScreenshots() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAllScreenshots'");
+        try {
+            List<Screenshot> screenshots = (List<Screenshot>)repository.findAll();
+
+            if(screenshots.isEmpty())
+                throw new CustomException(ErrorMessages.NOT_FOUND);
+
+            return screenshots.stream().map(ScreenshotDto::new).collect(Collectors.toList());
+        } catch (CustomException e) {
+            throw e;
+        }
     }
 
     @Override
