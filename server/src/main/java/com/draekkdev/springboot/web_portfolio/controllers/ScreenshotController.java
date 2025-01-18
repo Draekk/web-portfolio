@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.draekkdev.springboot.web_portfolio.models.dtos.ScreenshotDto;
+import com.draekkdev.springboot.web_portfolio.models.dtos.TechnologyDto;
 import com.draekkdev.springboot.web_portfolio.services.ScreenshotService;
+import com.draekkdev.springboot.web_portfolio.services.TechnologyService;
 
 import jakarta.validation.Valid;
 
@@ -17,10 +19,10 @@ import jakarta.validation.Valid;
 public class ScreenshotController {
 
     @Autowired
-    private ScreenshotService scService;
+    private TechnologyService service;
 
-    @GetMapping("/test/{id}")
-    public ResponseEntity<?> test(@PathVariable Integer id) {
-        return ResponseEntity.ok().body(scService.findScreenshotById(id));
+    @PostMapping("/test")
+    public ResponseEntity<?> test(@Valid @RequestBody TechnologyDto json) {
+        return ResponseEntity.ok().body(service.createTechnology(json));
     }
 }

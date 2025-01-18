@@ -26,5 +26,8 @@ public class ScreenshotDto {
     public ScreenshotDto(Screenshot screenshot) {
         id = screenshot.getId();
         url = screenshot.getUrl();
+
+        if(screenshot.getProject() != null)
+            project = new ProjectDto(screenshot.getProject());
     }
 }

@@ -2,6 +2,8 @@ package com.draekkdev.springboot.web_portfolio.models.dtos;
 
 import java.util.List;
 
+import com.draekkdev.springboot.web_portfolio.entities.Technology;
+
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -22,4 +24,11 @@ public class TechnologyDto {
     private String name;
 
     private List<ProjectDto> projects;
+
+    public TechnologyDto(Technology technology) {
+        id = technology.getId();
+        name = technology.getName();
+        if(technology.getProjects() != null)
+            projects = technology.getProjects().stream().map(ProjectDto::new).toList();
+    }
 }
