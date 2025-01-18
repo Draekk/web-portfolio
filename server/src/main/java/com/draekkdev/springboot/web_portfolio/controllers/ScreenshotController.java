@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.draekkdev.springboot.web_portfolio.models.dtos.ScreenshotDto;
 import com.draekkdev.springboot.web_portfolio.models.dtos.TechnologyDto;
+import com.draekkdev.springboot.web_portfolio.models.dtos.TechnologyRequestDto;
 import com.draekkdev.springboot.web_portfolio.services.ScreenshotService;
 import com.draekkdev.springboot.web_portfolio.services.TechnologyService;
 
@@ -22,7 +23,7 @@ public class ScreenshotController {
     private TechnologyService service;
 
     @PostMapping("/test")
-    public ResponseEntity<?> test(@Valid @RequestBody TechnologyDto json) {
+    public ResponseEntity<?> test(@Valid @RequestBody TechnologyRequestDto json) {
         return ResponseEntity.ok().body(service.createTechnology(json));
     }
 }

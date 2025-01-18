@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.draekkdev.springboot.web_portfolio.entities.Technology;
 import com.draekkdev.springboot.web_portfolio.errors.CustomException;
 import com.draekkdev.springboot.web_portfolio.models.dtos.TechnologyDto;
+import com.draekkdev.springboot.web_portfolio.models.dtos.TechnologyRequestDto;
 import com.draekkdev.springboot.web_portfolio.repositories.TechnologyRepository;
 
 @Service
@@ -17,10 +18,10 @@ public class TechnologyServiceImpl implements TechnologyService {
     private TechnologyRepository repository;
 
     @Override
-    public TechnologyDto createTechnology(TechnologyDto technologyDto) {
+    public TechnologyDto createTechnology(TechnologyRequestDto json) {
         try {
             Technology technology = new Technology();
-            technology.setName(technologyDto.getName());
+            technology.setName(json.getName());
 
             Technology savedTechnology = repository.save(technology);
 
@@ -32,7 +33,7 @@ public class TechnologyServiceImpl implements TechnologyService {
     }
 
     @Override
-    public TechnologyDto editTechnology(TechnologyDto technologyDto) {
+    public TechnologyDto editTechnology(TechnologyRequestDto json) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'editTechnology'");
     }

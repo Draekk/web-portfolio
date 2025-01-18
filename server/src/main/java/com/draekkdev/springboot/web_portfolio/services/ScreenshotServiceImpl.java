@@ -11,6 +11,7 @@ import com.draekkdev.springboot.web_portfolio.entities.Screenshot;
 import com.draekkdev.springboot.web_portfolio.errors.CustomException;
 import com.draekkdev.springboot.web_portfolio.errors.ErrorMessages;
 import com.draekkdev.springboot.web_portfolio.models.dtos.ScreenshotDto;
+import com.draekkdev.springboot.web_portfolio.models.dtos.ScreenshotRequestDto;
 import com.draekkdev.springboot.web_portfolio.repositories.ScreenshotRepository;
 
 @Service
@@ -20,10 +21,10 @@ public class ScreenshotServiceImpl implements ScreenshotService {
     private ScreenshotRepository repository;
 
     @Override
-    public ScreenshotDto createScreenshot(ScreenshotDto screenshotDto) {
+    public ScreenshotDto createScreenshot(ScreenshotRequestDto json) {
         try {
             Screenshot screenshot = new Screenshot();
-            screenshot.setUrl(screenshotDto.getUrl());
+            screenshot.setUrl(json.getUrl());
 
             Screenshot savedScreenshot = repository.save(screenshot);
 
