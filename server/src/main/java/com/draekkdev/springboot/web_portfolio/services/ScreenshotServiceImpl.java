@@ -1,6 +1,7 @@
 package com.draekkdev.springboot.web_portfolio.services;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,8 +49,17 @@ public class ScreenshotServiceImpl implements ScreenshotService {
 
     @Override
     public ScreenshotDto findScreenshotById(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findScreenshotById'");
+        try {
+            Optional<Screenshot> screenshotOptional = repository.findById(id.longValue());
+
+            if(screenshotOptional.isPresent())
+                return new ScreenshotDto(screenshotOptional.get());
+
+            throw new CustomException(ErrorMessages.NOT_FOUND);
+            
+        } catch (CustomException e) {
+            throw e;
+        }
     }
 
     @Override
