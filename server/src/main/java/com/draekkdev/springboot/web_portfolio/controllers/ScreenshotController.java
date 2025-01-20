@@ -22,8 +22,8 @@ public class ScreenshotController {
     @Autowired
     private TechnologyService service;
 
-    @PostMapping("/test")
-    public ResponseEntity<?> test(@Valid @RequestBody TechnologyRequestDto json) {
-        return ResponseEntity.ok().body(service.editTechnology(json));
+    @GetMapping("/test")
+    public ResponseEntity<?> test(/*@Valid @RequestBody TechnologyRequestDto json*/) {
+        return ResponseEntity.ok().body(service.findAllTechnologies());
     }
 }

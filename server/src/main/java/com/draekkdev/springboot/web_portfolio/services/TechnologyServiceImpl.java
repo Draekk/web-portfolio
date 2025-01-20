@@ -64,8 +64,12 @@ public class TechnologyServiceImpl implements TechnologyService {
 
     @Override
     public List<TechnologyDto> findAllTechnologies() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAllTechnologies'");
+        List<Technology> technologies = (List<Technology>)technologyRepository.findAll();
+
+        if(technologies.isEmpty())
+            throw new CustomException(ErrorCode.IS_EMPTY);
+
+        return technologies.stream().map(TechnologyDto::new).toList();
     }
 
     @Override
