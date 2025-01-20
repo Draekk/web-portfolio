@@ -1,8 +1,6 @@
 package com.draekkdev.springboot.web_portfolio.errors.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -21,19 +19,25 @@ public class HandlerController {
     }
 
     @ExceptionHandler({MethodArgumentNotValidException.class})
-    public ResponseEntity<?> methodArgumentNotValid(MethodArgumentNotValidException ex) {
-        Map<String, String> errorMap = new HashMap<>();
-        ex.getBindingResult().getFieldErrors().forEach(e -> errorMap.put(e.getField(), e.getDefaultMessage()));
+    public ResponseEntity<ErrorDto> methodArgumentNotValid(MethodArgumentNotValidException ex) {
+        ErrorDto error = new ErrorDto();
+        error.setMessage(ex.getMessage());
+        error.setErrorCode(ex.getClass().getSimpleName());
+        error.setStatus(HttpStatus.BAD_REQUEST.value());
+        
+        ex.getBindingResult().getFieldErrors().forEach(e -> {
+            error.getDetails().put(e.getField(), e.getDefaultMessage());
+        });
 
-        return ResponseEntity.badRequest().body(errorMap);
+        return ResponseEntity.badRequest().body(error);
     }
 
-    @ExceptionHandler({NullPointerException.class})
+    @ExceptionHandler({NullPointerException.class, DataAccessException.class})
     public ResponseEntity<ErrorDto> nullPointerException(Exception ex) {
         ErrorDto error = new ErrorDto();
-        error.setName(ex.getClass().getSimpleName());
+        error.setErrorCode(ex.getClass().getSimpleName());
         error.setMessage(ex.getMessage());
         error.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        return ResponseEntity.status(error.getStatus()).body(error);
+        return ResponseEntity.internalServerError().body(error);
     }
 }

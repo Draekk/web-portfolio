@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.draekkdev.springboot.web_portfolio.entities.Screenshot;
 import com.draekkdev.springboot.web_portfolio.errors.CustomException;
-import com.draekkdev.springboot.web_portfolio.errors.ErrorMessages;
+import com.draekkdev.springboot.web_portfolio.errors.ErrorCode;
 import com.draekkdev.springboot.web_portfolio.models.dtos.ScreenshotDto;
 import com.draekkdev.springboot.web_portfolio.models.dtos.ScreenshotRequestDto;
 import com.draekkdev.springboot.web_portfolio.repositories.ScreenshotRepository;
@@ -29,7 +29,7 @@ public class ScreenshotServiceImpl implements ScreenshotService {
             Screenshot savedScreenshot = repository.save(screenshot);
 
             return new ScreenshotDto(savedScreenshot);
-        } catch (CustomException e) {
+        } catch (Exception e) {
             throw e;
         }
     }
@@ -40,10 +40,10 @@ public class ScreenshotServiceImpl implements ScreenshotService {
             List<Screenshot> screenshots = (List<Screenshot>)repository.findAll();
 
             if(screenshots.isEmpty())
-                throw new CustomException(ErrorMessages.NOT_FOUND);
+                throw new CustomException(ErrorCode.NOT_FOUND);
 
             return screenshots.stream().map(ScreenshotDto::new).collect(Collectors.toList());
-        } catch (CustomException e) {
+        } catch (Exception e) {
             throw e;
         }
     }
@@ -56,7 +56,7 @@ public class ScreenshotServiceImpl implements ScreenshotService {
             if(screenshotOptional.isPresent())
                 return new ScreenshotDto(screenshotOptional.get());
 
-            throw new CustomException(ErrorMessages.NOT_FOUND);
+            throw new CustomException(ErrorCode.NOT_FOUND);
             
         } catch (CustomException e) {
             throw e;

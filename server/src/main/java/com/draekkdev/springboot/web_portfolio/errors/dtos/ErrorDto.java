@@ -1,27 +1,46 @@
 package com.draekkdev.springboot.web_portfolio.errors.dtos;
 
-import lombok.AllArgsConstructor;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @ToString
 public class ErrorDto {
     
-    private String name;
-
     private String message;
+
+    private String errorCode;
 
     private Integer status;
 
-    public ErrorDto(String message, Integer status) {
+    private Map<String, String> details;
+
+    private LocalDateTime timestamp;
+
+    public ErrorDto() {
+        details = new HashMap<>();
+        timestamp = LocalDateTime.now();
+    }
+
+    public ErrorDto(String message, String errorCode, Integer status) {
         this.message = message;
+        this.errorCode = errorCode;
         this.status = status;
+        timestamp = LocalDateTime.now();
+    }
+
+    public ErrorDto(String message, String errorCode, Integer status, Map<String, String> details) {
+        this.message = message;
+        this.errorCode = errorCode;
+        this.status = status;
+        this.details = details;
+        timestamp = LocalDateTime.now();
     }
 
 }

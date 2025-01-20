@@ -6,12 +6,10 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 @NoArgsConstructor
 @Getter
-@Setter
 @ToString
 public class TechnologyRequestDto {
 
@@ -21,5 +19,5 @@ public class TechnologyRequestDto {
     @NotBlank(message = "The name value cannot be blank or null.")
     private String name;
 
-    private List<@Min(value = 1, message = "The Project ID value cannot be less than 1.") Integer> projectIdList;
+    private List<@Min(value = 1, message = "The Project ID value cannot be less than 1.") Long> projectIdList;
 }

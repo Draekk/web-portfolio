@@ -18,4 +18,5 @@ public interface TechnologyService {
     List<TechnologyDto> findTechnologiesByName(String query);
 
     void deleteTechnologyById(Integer id);
+
 }

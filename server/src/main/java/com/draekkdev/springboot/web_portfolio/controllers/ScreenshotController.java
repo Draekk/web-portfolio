@@ -24,6 +24,6 @@ public class ScreenshotController {
 
     @PostMapping("/test")
     public ResponseEntity<?> test(@Valid @RequestBody TechnologyRequestDto json) {
-        return ResponseEntity.ok().body(service.createTechnology(json));
+        return ResponseEntity.ok().body(service.editTechnology(json));
     }
 }
