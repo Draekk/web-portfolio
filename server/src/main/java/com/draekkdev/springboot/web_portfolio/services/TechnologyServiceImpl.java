@@ -110,9 +110,13 @@ public class TechnologyServiceImpl implements TechnologyService {
     @Override
     public void deleteTechnologyById(Integer id) {
         try {
-            
+            if(technologyRepository.existsById(id.longValue())) {
+                technologyRepository.deleteById(id.longValue());
+            } else {
+                throw new CustomException(ErrorCode.NOT_FOUND);
+            }
         } catch (Exception e) {
-            // TODO: handle exception
+            throw e;
         }
     }
 
