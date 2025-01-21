@@ -3,6 +3,7 @@ package com.draekkdev.springboot.web_portfolio.errors.controllers;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -32,11 +33,17 @@ public class HandlerController {
         return ResponseEntity.badRequest().body(error);
     }
 
-    @ExceptionHandler({NullPointerException.class, DataAccessException.class})
-    public ResponseEntity<ErrorDto> nullPointerException(Exception ex) {
+    @ExceptionHandler({NullPointerException.class, /*DataAccessException.class,*/ HttpRequestMethodNotSupportedException.class})
+    public ResponseEntity<ErrorDto> globalErrorHandler(Exception ex) {
         ErrorDto error = new ErrorDto();
         error.setErrorCode(ex.getClass().getSimpleName());
         error.setMessage(ex.getMessage());
+        
+        if(ex instanceof HttpRequestMethodNotSupportedException) {
+            error.setStatus(HttpStatus.METHOD_NOT_ALLOWED.value());
+            return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED.value()).body(error);
+        }
+        
         error.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
         return ResponseEntity.internalServerError().body(error);
     }

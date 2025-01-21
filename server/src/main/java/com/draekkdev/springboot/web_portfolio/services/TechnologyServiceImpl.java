@@ -1,6 +1,7 @@
 package com.draekkdev.springboot.web_portfolio.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,15 +44,15 @@ public class TechnologyServiceImpl implements TechnologyService {
     @Transactional
     public TechnologyDto editTechnology(TechnologyRequestDto json) {
         try {
-            List<Project> projets = (List<Project>)projectRepository.findAllById(json.getProjectIdList());
-
-            if(projets.isEmpty() || projets == null)
-                throw new CustomException(ErrorCode.IS_EMPTY);
-            
             Technology technology = new Technology();
+            
+            if(json.getProjectIdList() != null) {
+                List<Project> projects = (List<Project>)projectRepository.findAllById(json.getProjectIdList());
+                technology.setProjects(projects);
+            }
+
             technology.setId(json.getId());
             technology.setName(json.getName());
-            technology.setProjects(projets);
 
             Technology savedTechnology = technologyRepository.save(technology);
 
@@ -64,30 +65,55 @@ public class TechnologyServiceImpl implements TechnologyService {
 
     @Override
     public List<TechnologyDto> findAllTechnologies() {
-        List<Technology> technologies = (List<Technology>)technologyRepository.findAll();
+        try {
+            List<Technology> technologies = (List<Technology>)technologyRepository.findAll();
 
-        if(technologies.isEmpty())
-            throw new CustomException(ErrorCode.IS_EMPTY);
+            if(technologies.isEmpty())
+                throw new CustomException(ErrorCode.IS_EMPTY);
 
-        return technologies.stream().map(TechnologyDto::new).toList();
+            return technologies.stream().map(TechnologyDto::new).toList();
+            
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @Override
     public TechnologyDto findTechnologyById(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findTechnologyById'");
+        try {
+            Optional<Technology> technologyOptional = technologyRepository.findById(id.longValue());
+
+            if(technologyOptional.isPresent()) {
+                return new TechnologyDto(technologyOptional.get());
+            }
+
+            throw new CustomException(ErrorCode.NOT_FOUND);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @Override
     public List<TechnologyDto> findTechnologiesByName(String query) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findTechnologiesByName'");
+        try {
+            List<Technology> technologies = technologyRepository.findByNameContaining(query);
+
+            if(technologies.isEmpty())
+                throw new CustomException(ErrorCode.IS_EMPTY);
+
+            return technologies.stream().map(TechnologyDto::new).toList();
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @Override
     public void deleteTechnologyById(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteTechnologyById'");
+        try {
+            
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
 
 }
