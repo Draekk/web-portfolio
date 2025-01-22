@@ -2,20 +2,20 @@ package com.draekkdev.springboot.web_portfolio.services;
 
 import java.util.List;
 
-import com.draekkdev.springboot.web_portfolio.models.dtos.TechnologyDto;
+import com.draekkdev.springboot.web_portfolio.models.dtos.TechnologyDetailedDto;
 import com.draekkdev.springboot.web_portfolio.models.dtos.TechnologyRequestDto;
 
 public interface TechnologyService {
 
-    TechnologyDto createTechnology(TechnologyRequestDto json);
+    TechnologyDetailedDto createTechnology(TechnologyRequestDto json);
 
-    TechnologyDto editTechnology(TechnologyRequestDto json);
+    TechnologyDetailedDto editTechnology(TechnologyRequestDto json);
 
-    List<TechnologyDto> findAllTechnologies();
+    List<TechnologyDetailedDto> findAllTechnologies();
 
-    TechnologyDto findTechnologyById(Integer id);
+    TechnologyDetailedDto findTechnologyById(Integer id);
 
-    List<TechnologyDto> findTechnologiesByName(String query);
+    List<TechnologyDetailedDto> findTechnologiesByName(String query);
 
     void deleteTechnologyById(Integer id);
 

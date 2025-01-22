@@ -2,16 +2,16 @@ package com.draekkdev.springboot.web_portfolio.services;
 
 import java.util.List;
 
-import com.draekkdev.springboot.web_portfolio.models.dtos.ScreenshotDto;
+import com.draekkdev.springboot.web_portfolio.models.dtos.ScreenshotDetailedDto;
 import com.draekkdev.springboot.web_portfolio.models.dtos.ScreenshotRequestDto;
 
 public interface ScreenshotService {
 
-    ScreenshotDto createScreenshot(ScreenshotRequestDto json);
+    ScreenshotDetailedDto createScreenshot(ScreenshotRequestDto json);
 
-    List<ScreenshotDto> findAllScreenshots();
+    List<ScreenshotDetailedDto> findAllScreenshots();
 
-    ScreenshotDto findScreenshotById(Integer id);
+    ScreenshotDetailedDto findScreenshotById(Integer id);
 
     void deleteScreenshotById(Integer id);
 }

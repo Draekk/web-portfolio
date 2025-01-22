@@ -14,7 +14,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ProjectDto {
+public class ProjectDetailedDto {
 
     private Long id;
 
@@ -26,21 +26,21 @@ public class ProjectDto {
 
     private String url;
 
-    private List<ScreenshotDto> screenshots;
+    private List<ScreenshotSummaryDto> screenshots;
 
-    private List<TechnologyDto> technologies;
+    private List<TechnologySummaryDto> technologies;
 
-    public ProjectDto(Project project){
+    public ProjectDetailedDto(Project project){
         id = project.getId();
         name = project.getName();
         description = project.getDescription();
         creationDate = project.getCreationDate();
         url = project.getUrl();
         
-        if(project.getScreenshots() != null || !project.getScreenshots().isEmpty()) 
-            screenshots = project.getScreenshots().stream().map(ScreenshotDto::new).toList();
+        if(project.getScreenshots() != null && !project.getScreenshots().isEmpty()) 
+            screenshots = project.getScreenshots().stream().map(ScreenshotSummaryDto::new).toList();
 
-        if(project.getTechnologies() != null || !project.getTechnologies().isEmpty())
-            technologies = project.getTechnologies().stream().map(TechnologyDto::new).toList();
+        if(project.getTechnologies() != null && !project.getTechnologies().isEmpty())
+            technologies = project.getTechnologies().stream().map(TechnologySummaryDto::new).toList();
     }
 }

@@ -34,7 +34,7 @@ public class ProjectRequestDto {
     @NotBlank(message = "The URL cannot be blank or null.")
     private String url;
 
-    private List<@Min(value = 1, message = "The Screenshot ID value cannot be less than 1.") Long> screenshotIdList;
+    private List<@NotBlank(message = "The URL cannot be blank or null.") String> screenshotUrls;
 
     @Size(min = 1, message = "At least one technology must be attached.")
     private List<@Min(value = 1, message = "The Technology ID value cannot be less than 1.") Long> technologyIdList;

@@ -50,6 +50,7 @@ public class Project {
     private List<Screenshot> screenshots;
 
     @ManyToMany
+    @Column(nullable = false)
     @JoinTable(
         name = "projects_technologies",
         joinColumns = @JoinColumn(name = "project_id"),

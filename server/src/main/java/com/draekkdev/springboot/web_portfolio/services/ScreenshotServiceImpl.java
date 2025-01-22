@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.draekkdev.springboot.web_portfolio.entities.Screenshot;
 import com.draekkdev.springboot.web_portfolio.errors.CustomException;
 import com.draekkdev.springboot.web_portfolio.errors.ErrorCode;
-import com.draekkdev.springboot.web_portfolio.models.dtos.ScreenshotDto;
+import com.draekkdev.springboot.web_portfolio.models.dtos.ScreenshotDetailedDto;
 import com.draekkdev.springboot.web_portfolio.models.dtos.ScreenshotRequestDto;
 import com.draekkdev.springboot.web_portfolio.repositories.ScreenshotRepository;
 
@@ -21,40 +21,40 @@ public class ScreenshotServiceImpl implements ScreenshotService {
     private ScreenshotRepository repository;
 
     @Override
-    public ScreenshotDto createScreenshot(ScreenshotRequestDto json) {
+    public ScreenshotDetailedDto createScreenshot(ScreenshotRequestDto json) {
         try {
             Screenshot screenshot = new Screenshot();
             screenshot.setUrl(json.getUrl());
 
             Screenshot savedScreenshot = repository.save(screenshot);
 
-            return new ScreenshotDto(savedScreenshot);
+            return new ScreenshotDetailedDto(savedScreenshot);
         } catch (Exception e) {
             throw e;
         }
     }
 
     @Override
-    public List<ScreenshotDto> findAllScreenshots() {
+    public List<ScreenshotDetailedDto> findAllScreenshots() {
         try {
             List<Screenshot> screenshots = (List<Screenshot>)repository.findAll();
 
             if(screenshots.isEmpty())
                 throw new CustomException(ErrorCode.NOT_FOUND);
 
-            return screenshots.stream().map(ScreenshotDto::new).collect(Collectors.toList());
+            return screenshots.stream().map(ScreenshotDetailedDto::new).collect(Collectors.toList());
         } catch (Exception e) {
             throw e;
         }
     }
 
     @Override
-    public ScreenshotDto findScreenshotById(Integer id) {
+    public ScreenshotDetailedDto findScreenshotById(Integer id) {
         try {
             Optional<Screenshot> screenshotOptional = repository.findById(id.longValue());
 
             if(screenshotOptional.isPresent())
-                return new ScreenshotDto(screenshotOptional.get());
+                return new ScreenshotDetailedDto(screenshotOptional.get());
 
             throw new CustomException(ErrorCode.NOT_FOUND);
             

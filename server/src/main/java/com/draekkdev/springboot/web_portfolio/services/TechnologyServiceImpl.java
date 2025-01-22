@@ -11,7 +11,7 @@ import com.draekkdev.springboot.web_portfolio.entities.Project;
 import com.draekkdev.springboot.web_portfolio.entities.Technology;
 import com.draekkdev.springboot.web_portfolio.errors.CustomException;
 import com.draekkdev.springboot.web_portfolio.errors.ErrorCode;
-import com.draekkdev.springboot.web_portfolio.models.dtos.TechnologyDto;
+import com.draekkdev.springboot.web_portfolio.models.dtos.TechnologyDetailedDto;
 import com.draekkdev.springboot.web_portfolio.models.dtos.TechnologyRequestDto;
 import com.draekkdev.springboot.web_portfolio.repositories.ProjectRepository;
 import com.draekkdev.springboot.web_portfolio.repositories.TechnologyRepository;
@@ -26,14 +26,14 @@ public class TechnologyServiceImpl implements TechnologyService {
     private ProjectRepository projectRepository;
 
     @Override
-    public TechnologyDto createTechnology(TechnologyRequestDto json) {
+    public TechnologyDetailedDto createTechnology(TechnologyRequestDto json) {
         try {
             Technology technology = new Technology();
             technology.setName(json.getName());
 
             Technology savedTechnology = technologyRepository.save(technology);
 
-            return new TechnologyDto(savedTechnology);
+            return new TechnologyDetailedDto(savedTechnology);
             
         } catch (Exception e) {
             throw e;
@@ -42,7 +42,7 @@ public class TechnologyServiceImpl implements TechnologyService {
 
     @Override
     @Transactional
-    public TechnologyDto editTechnology(TechnologyRequestDto json) {
+    public TechnologyDetailedDto editTechnology(TechnologyRequestDto json) {
         try {
             Technology technology = new Technology();
             
@@ -56,7 +56,7 @@ public class TechnologyServiceImpl implements TechnologyService {
 
             Technology savedTechnology = technologyRepository.save(technology);
 
-            return new TechnologyDto(savedTechnology);
+            return new TechnologyDetailedDto(savedTechnology);
 
         } catch (Exception e) {
             throw e;
@@ -64,14 +64,14 @@ public class TechnologyServiceImpl implements TechnologyService {
     }
 
     @Override
-    public List<TechnologyDto> findAllTechnologies() {
+    public List<TechnologyDetailedDto> findAllTechnologies() {
         try {
             List<Technology> technologies = (List<Technology>)technologyRepository.findAll();
 
             if(technologies.isEmpty())
                 throw new CustomException(ErrorCode.IS_EMPTY);
 
-            return technologies.stream().map(TechnologyDto::new).toList();
+            return technologies.stream().map(TechnologyDetailedDto::new).toList();
             
         } catch (Exception e) {
             throw e;
@@ -79,12 +79,12 @@ public class TechnologyServiceImpl implements TechnologyService {
     }
 
     @Override
-    public TechnologyDto findTechnologyById(Integer id) {
+    public TechnologyDetailedDto findTechnologyById(Integer id) {
         try {
             Optional<Technology> technologyOptional = technologyRepository.findById(id.longValue());
 
             if(technologyOptional.isPresent()) {
-                return new TechnologyDto(technologyOptional.get());
+                return new TechnologyDetailedDto(technologyOptional.get());
             }
 
             throw new CustomException(ErrorCode.NOT_FOUND);
@@ -94,14 +94,14 @@ public class TechnologyServiceImpl implements TechnologyService {
     }
 
     @Override
-    public List<TechnologyDto> findTechnologiesByName(String query) {
+    public List<TechnologyDetailedDto> findTechnologiesByName(String query) {
         try {
             List<Technology> technologies = technologyRepository.findByNameContaining(query);
 
             if(technologies.isEmpty())
                 throw new CustomException(ErrorCode.IS_EMPTY);
 
-            return technologies.stream().map(TechnologyDto::new).toList();
+            return technologies.stream().map(TechnologyDetailedDto::new).toList();
         } catch (Exception e) {
             throw e;
         }

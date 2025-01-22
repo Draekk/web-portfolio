@@ -33,7 +33,11 @@ public class HandlerController {
         return ResponseEntity.badRequest().body(error);
     }
 
-    @ExceptionHandler({NullPointerException.class, /*DataAccessException.class,*/ HttpRequestMethodNotSupportedException.class})
+    @ExceptionHandler({
+        NullPointerException.class,
+        IllegalArgumentException.class,
+        HttpRequestMethodNotSupportedException.class
+    })
     public ResponseEntity<ErrorDto> globalErrorHandler(Exception ex) {
         ErrorDto error = new ErrorDto();
         error.setErrorCode(ex.getClass().getSimpleName());

@@ -13,18 +13,18 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class TechnologyDto {
+public class TechnologyDetailedDto {
 
     private Long id;
     
     private String name;
 
-    private List<ProjectDto> projects;
+    private List<ProjectDetailedDto> projects;
 
-    public TechnologyDto(Technology technology) {
+    public TechnologyDetailedDto(Technology technology) {
         id = technology.getId();
         name = technology.getName();
         if(technology.getProjects() != null)
-            projects = technology.getProjects().stream().map(ProjectDto::new).toList();
+            projects = technology.getProjects().stream().map(ProjectDetailedDto::new).toList();
     }
 }

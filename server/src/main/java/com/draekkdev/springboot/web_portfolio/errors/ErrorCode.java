@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public enum ErrorCode {
 
-    NOT_FOUND("NOT_FOUND", "Item not found", 404),
+    NOT_FOUND("NOT_FOUND", "Item(s) not found", 404),
     IS_EMPTY("IS_EMPTY", "The list is empty", 404),
     NOT_SAVED("NOT_SAVED", "Item not saved", 500);
 

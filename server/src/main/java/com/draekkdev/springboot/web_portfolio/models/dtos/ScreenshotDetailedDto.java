@@ -13,7 +13,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ScreenshotDto {
+public class ScreenshotDetailedDto {
 
     @Min(value = 1, message = "The ID cannot be less than 1.")
     private Long id;
@@ -21,13 +21,13 @@ public class ScreenshotDto {
     @NotNull(message = "The URL cannot be null.")
     private String url;
 
-    private ProjectDto project;
+    private ProjectDetailedDto project;
 
-    public ScreenshotDto(Screenshot screenshot) {
+    public ScreenshotDetailedDto(Screenshot screenshot) {
         id = screenshot.getId();
         url = screenshot.getUrl();
 
         if(screenshot.getProject() != null)
-            project = new ProjectDto(screenshot.getProject());
+            project = new ProjectDetailedDto(screenshot.getProject());
     }
 }
