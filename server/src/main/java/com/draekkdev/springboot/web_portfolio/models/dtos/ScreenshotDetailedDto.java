@@ -21,13 +21,13 @@ public class ScreenshotDetailedDto {
     @NotNull(message = "The URL cannot be null.")
     private String url;
 
-    private ProjectDetailedDto project;
+    private ProjectSummaryDto project;
 
     public ScreenshotDetailedDto(Screenshot screenshot) {
         id = screenshot.getId();
         url = screenshot.getUrl();
 
         if(screenshot.getProject() != null)
-            project = new ProjectDetailedDto(screenshot.getProject());
+            project = new ProjectSummaryDto(screenshot.getProject());
     }
 }

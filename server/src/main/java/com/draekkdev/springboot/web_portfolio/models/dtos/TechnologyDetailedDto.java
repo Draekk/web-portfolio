@@ -19,12 +19,12 @@ public class TechnologyDetailedDto {
     
     private String name;
 
-    private List<ProjectDetailedDto> projects;
+    private List<ProjectSummaryDto> projects;
 
     public TechnologyDetailedDto(Technology technology) {
         id = technology.getId();
         name = technology.getName();
         if(technology.getProjects() != null)
-            projects = technology.getProjects().stream().map(ProjectDetailedDto::new).toList();
+            projects = technology.getProjects().stream().map(ProjectSummaryDto::new).toList();
     }
 }
