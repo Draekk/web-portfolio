@@ -14,4 +14,8 @@ public class CustomException extends RuntimeException {
     public CustomException(ErrorCode errorCode) {
         error = new ErrorDto(errorCode.getMessage(), errorCode.getErrorCode(), errorCode.getStatus());
     }
+
+    public CustomException(ErrorCode errorCode, String customMessage) {
+        error = new ErrorDto(customMessage, errorCode.getErrorCode(), errorCode.getStatus());
+    }
 }

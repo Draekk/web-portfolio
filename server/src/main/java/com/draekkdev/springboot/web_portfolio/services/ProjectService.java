@@ -9,8 +9,6 @@ public interface ProjectService {
 
     ProjectDetailedDto createProject(ProjectRequestDto json);
 
-    ProjectDetailedDto editProject(ProjectRequestDto json);
-
     List<ProjectDetailedDto> findAllProjects();
 
     ProjectDetailedDto findProjectById(Integer id);

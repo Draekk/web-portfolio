@@ -22,55 +22,40 @@ public class ScreenshotServiceImpl implements ScreenshotService {
 
     @Override
     public ScreenshotDetailedDto createScreenshot(ScreenshotRequestDto json) {
-        try {
-            Screenshot screenshot = new Screenshot();
-            screenshot.setUrl(json.getUrl());
+        Screenshot screenshot = new Screenshot();
+        screenshot.setUrl(json.getUrl());
 
-            Screenshot savedScreenshot = repository.save(screenshot);
+        Screenshot savedScreenshot = repository.save(screenshot);
 
-            return new ScreenshotDetailedDto(savedScreenshot);
-        } catch (Exception e) {
-            throw e;
-        }
+        return new ScreenshotDetailedDto(savedScreenshot);
     }
 
     @Override
     public List<ScreenshotDetailedDto> findAllScreenshots() {
-        try {
-            List<Screenshot> screenshots = (List<Screenshot>)repository.findAll();
+        List<Screenshot> screenshots = (List<Screenshot>)repository.findAll();
 
-            if(screenshots.isEmpty())
-                throw new CustomException(ErrorCode.NOT_FOUND);
+        if(screenshots.isEmpty())
+            throw new CustomException(ErrorCode.NOT_FOUND);
 
-            return screenshots.stream().map(ScreenshotDetailedDto::new).collect(Collectors.toList());
-        } catch (Exception e) {
-            throw e;
-        }
+        return screenshots.stream().map(ScreenshotDetailedDto::new).collect(Collectors.toList());
     }
 
     @Override
     public ScreenshotDetailedDto findScreenshotById(Integer id) {
-        try {
-            Optional<Screenshot> screenshotOptional = repository.findById(id.longValue());
+        Optional<Screenshot> screenshotOptional = repository.findById(id.longValue());
 
-            if(screenshotOptional.isPresent())
-                return new ScreenshotDetailedDto(screenshotOptional.get());
+        if(screenshotOptional.isPresent())
+            return new ScreenshotDetailedDto(screenshotOptional.get());
 
-            throw new CustomException(ErrorCode.NOT_FOUND);
-            
-        } catch (CustomException e) {
-            throw e;
-        }
+        throw new CustomException(ErrorCode.NOT_FOUND);
     }
 
     @Override
     public void deleteScreenshotById(Integer id) {
-        try {
+        if(repository.existsById(id.longValue()))
             repository.deleteById(id.longValue());
-            
-        } catch (CustomException e) {
-            throw e;
-        }
+        else
+            throw new CustomException(ErrorCode.NOT_FOUND);
     }
 
 }

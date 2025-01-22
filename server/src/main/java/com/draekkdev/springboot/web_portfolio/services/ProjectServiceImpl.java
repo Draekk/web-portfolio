@@ -32,23 +32,28 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     @Transactional
     public ProjectDetailedDto createProject(ProjectRequestDto json) {
-        try {
-            Project project = new Project();
-            project.setName(json.getName());
-            project.setDescription(json.getDescription());
-            project.setUrl(json.getUrl());
-            project.setCreationDate(json.getCreationDate());
+        Project project = new Project();
 
-            List<Technology> technologies = (List<Technology>)technologyRepository.findAllById(json.getTechnologyIdList());
+        if(json.getId() != null)
+            if(projectRepository.existsById(json.getId().longValue())) 
+                project.setId(json.getId().longValue());
+            else
+                throw new CustomException(ErrorCode.NOT_FOUND, "The Project ID doesn't exist.");
 
-            if(technologies.size() != json.getTechnologyIdList().size())
-                throw new CustomException(ErrorCode.NOT_FOUND);
+        project.setName(json.getName());
+        project.setDescription(json.getDescription());
+        project.setUrl(json.getUrl());
+        project.setCreationDate(json.getCreationDate());
 
-            project.setTechnologies(technologies);
+        List<Technology> technologies = (List<Technology>)technologyRepository.findAllById(json.getTechnologyIdList());
 
+        if(technologies.size() != json.getTechnologyIdList().size())
+            throw new CustomException(ErrorCode.NOT_FOUND);
 
-            if(json.getScreenshotUrls() != null) {
-                List<Screenshot> screenshots = json.getScreenshotUrls().stream()
+        project.setTechnologies(technologies);
+
+        if(json.getScreenshotUrls() != null) {
+            List<Screenshot> screenshots = json.getScreenshotUrls().stream()
                 .filter(url -> url != null && !url.isBlank())
                 .map(url -> {
                     Screenshot screenshot = new Screenshot();
@@ -57,23 +62,12 @@ public class ProjectServiceImpl implements ProjectService {
                     return screenshot;
                 }).toList();
 
-                List<Screenshot> savedScreenshots = (List<Screenshot>)screenshotRepository.saveAll((Iterable<Screenshot>) screenshots);
-                project.setScreenshots(savedScreenshots);
-            }
-
-            Project savedProject = projectRepository.save(project);
-            return new ProjectDetailedDto(savedProject);
-
-
-        } catch (Exception e) {
-            throw e;
+            List<Screenshot> savedScreenshots = (List<Screenshot>)screenshotRepository.saveAll((Iterable<Screenshot>) screenshots);
+            project.setScreenshots(savedScreenshots);
         }
-    }
 
-    @Override
-    public ProjectDetailedDto editProject(ProjectRequestDto json) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'editProject'");
+        Project savedProject = projectRepository.save(project);
+        return new ProjectDetailedDto(savedProject);
     }
 
     @Override
