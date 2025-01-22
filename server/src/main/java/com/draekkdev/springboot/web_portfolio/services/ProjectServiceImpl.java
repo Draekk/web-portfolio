@@ -72,8 +72,11 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public List<ProjectDetailedDto> findAllProjects() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAllProjects'");
+        List<Project> projects = (List<Project>) projectRepository.findAll();
+        if(projects.isEmpty())
+            throw new CustomException(ErrorCode.IS_EMPTY, "Projects not found. Empty list.");
+        
+        return projects.stream().map(ProjectDetailedDto::new).toList();
     }
 
     @Override
