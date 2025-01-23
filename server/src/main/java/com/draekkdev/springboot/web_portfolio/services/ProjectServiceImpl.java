@@ -1,6 +1,7 @@
 package com.draekkdev.springboot.web_portfolio.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -81,20 +82,30 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public ProjectDetailedDto findProjectById(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findProjectById'");
+        Optional<Project> projectOptional = projectRepository.findById(id.longValue());
+
+        if(projectOptional.isPresent())
+            return new ProjectDetailedDto(projectOptional.get());
+        
+        throw new CustomException(ErrorCode.NOT_FOUND);
     }
 
     @Override
     public List<ProjectDetailedDto> findProjectsByName(String query) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findProjectsByName'");
+        List<Project> projects = projectRepository.findByNameContaining(query);
+
+        if(projects == null || projects.isEmpty())
+            throw new CustomException(ErrorCode.IS_EMPTY);
+
+        return projects.stream().map(ProjectDetailedDto::new).toList();
     }
 
     @Override
     public void deleteProjectById(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteProjectById'");
+        if(!projectRepository.existsById(id.longValue()))
+            throw new CustomException(ErrorCode.NOT_FOUND);
+
+        projectRepository.deleteById(id.longValue());
     }
 
 

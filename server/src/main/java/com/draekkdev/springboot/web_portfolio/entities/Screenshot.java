@@ -30,7 +30,7 @@ public class Screenshot {
     @Column(nullable = false)
     private String url;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "project_id")
     private Project project;
 }

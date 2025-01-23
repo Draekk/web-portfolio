@@ -3,6 +3,7 @@ package com.draekkdev.springboot.web_portfolio.entities;
 import java.time.LocalDate;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -46,7 +47,7 @@ public class Project {
     @Column(nullable = false)
     private String url;
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Screenshot> screenshots;
 
     @ManyToMany
