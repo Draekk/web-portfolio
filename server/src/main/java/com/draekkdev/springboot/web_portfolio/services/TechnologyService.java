@@ -9,8 +9,6 @@ public interface TechnologyService {
 
     TechnologyDetailedDto createTechnology(TechnologyRequestDto json);
 
-    TechnologyDetailedDto editTechnology(TechnologyRequestDto json);
-
     List<TechnologyDetailedDto> findAllTechnologies();
 
     TechnologyDetailedDto findTechnologyById(Integer id);

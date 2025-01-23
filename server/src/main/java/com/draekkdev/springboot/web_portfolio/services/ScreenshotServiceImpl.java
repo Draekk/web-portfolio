@@ -23,7 +23,7 @@ public class ScreenshotServiceImpl implements ScreenshotService {
     @Override
     public ScreenshotDetailedDto createScreenshot(ScreenshotRequestDto json) {
         Screenshot screenshot = new Screenshot();
-        screenshot.setUrl(json.getUrl());
+        screenshot.setUrl(json.getUrl().trim().toLowerCase());
 
         Screenshot savedScreenshot = repository.save(screenshot);
 

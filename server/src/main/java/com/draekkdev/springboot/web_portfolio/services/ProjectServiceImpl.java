@@ -41,9 +41,9 @@ public class ProjectServiceImpl implements ProjectService {
             else
                 throw new CustomException(ErrorCode.NOT_FOUND, "The Project ID doesn't exist.");
 
-        project.setName(json.getName());
-        project.setDescription(json.getDescription());
-        project.setUrl(json.getUrl());
+        project.setName(json.getName().trim());
+        project.setDescription(json.getDescription().trim());
+        project.setUrl(json.getUrl().trim().toLowerCase());
         project.setCreationDate(json.getCreationDate());
 
         List<Technology> technologies = (List<Technology>)technologyRepository.findAllById(json.getTechnologyIdList());
@@ -58,7 +58,7 @@ public class ProjectServiceImpl implements ProjectService {
                 .filter(url -> url != null && !url.isBlank())
                 .map(url -> {
                     Screenshot screenshot = new Screenshot();
-                    screenshot.setUrl(url);
+                    screenshot.setUrl(url.trim().toLowerCase());
                     screenshot.setProject(project);
                     return screenshot;
                 }).toList();
