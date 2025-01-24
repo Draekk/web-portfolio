@@ -5,6 +5,7 @@ import java.util.List;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -27,7 +28,7 @@ public class ProjectRequestDto {
     @Size(min = 10, message = "The description needs to be larger than 10 characters.")
     private String description;
 
-    @NotBlank(message = "The creation date cannot be blank or null.")
+    @NotNull(message = "The Creation data cannot be null")
     @PastOrPresent(message = "The creation date needs to be today or past.")
     private LocalDate creationDate;
 

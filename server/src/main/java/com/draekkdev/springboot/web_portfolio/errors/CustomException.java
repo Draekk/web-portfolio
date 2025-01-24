@@ -1,7 +1,5 @@
 package com.draekkdev.springboot.web_portfolio.errors;
 
-import com.draekkdev.springboot.web_portfolio.errors.dtos.ErrorDto;
-
 import lombok.Getter;
 import lombok.ToString;
 
@@ -9,13 +7,21 @@ import lombok.ToString;
 @ToString
 public class CustomException extends RuntimeException {
 
-    private ErrorDto error;
+    private String message;
+
+    private String errorName;
+
+    private int statusCode;
 
     public CustomException(ErrorCode errorCode) {
-        error = new ErrorDto(errorCode.getMessage(), errorCode.getErrorCode(), errorCode.getStatus());
+        message = errorCode.getMessage();
+        errorName = errorCode.getErrorCode();
+        this.statusCode = errorCode.getStatus();
     }
 
-    public CustomException(ErrorCode errorCode, String customMessage) {
-        error = new ErrorDto(customMessage, errorCode.getErrorCode(), errorCode.getStatus());
+    public CustomException(ErrorCode errorCode, String message) {
+        this.message = message;
+        errorName = errorCode.getErrorCode();
+        this.statusCode = errorCode.getStatus();
     }
 }
