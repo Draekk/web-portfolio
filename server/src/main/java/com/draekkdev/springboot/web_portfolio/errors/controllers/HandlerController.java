@@ -12,26 +12,30 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import com.draekkdev.springboot.web_portfolio.errors.CustomException;
 import com.draekkdev.springboot.web_portfolio.models.dtos.ResponseDto;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestControllerAdvice
 public class HandlerController {
 
     @ExceptionHandler({CustomException.class})
-    public ResponseEntity<ResponseDto<?>> customException(CustomException ex) {
+    public ResponseEntity<ResponseDto<?>> customException(CustomException ex, HttpServletRequest request) {
         ResponseDto<?> response = new ResponseDto<>();
         response.setMessage(ex.getMessage());
         response.setSuccess(false);
         response.setStatusCode(ex.getStatusCode());
+        response.setPath(request.getRequestURI());
         response.getError().put("errorName", ex.getErrorName());
         
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
     @ExceptionHandler({MethodArgumentNotValidException.class})
-    public ResponseEntity<ResponseDto<?>> methodArgumentNotValid(MethodArgumentNotValidException ex) {
+    public ResponseEntity<ResponseDto<?>> methodArgumentNotValid(MethodArgumentNotValidException ex, HttpServletRequest request) {
         ResponseDto<?> response = new ResponseDto<>();
         response.setMessage(ex.getMessage());
         response.setSuccess(false);
         response.setStatusCode(HttpStatus.BAD_REQUEST.value());
+        response.setPath(request.getRequestURI());
         response.getError().put("errorName", ex.getClass().getSimpleName());
 
         ex.getBindingResult().getFieldErrors().forEach(e -> {
@@ -48,11 +52,12 @@ public class HandlerController {
         DataIntegrityViolationException.class,
         HttpMessageNotReadableException.class
     })
-    public ResponseEntity<ResponseDto<?>> globalErrorHandler(Exception ex) {
+    public ResponseEntity<ResponseDto<?>> globalErrorHandler(Exception ex, HttpServletRequest request) {
         ResponseDto<?> response = new ResponseDto<>();
         response.setMessage(ex.getMessage());
         response.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
         response.setSuccess(false);
+        response.setPath(request.getRequestURI());
         response.getError().put("errorName", ex.getClass().getSimpleName());
         
         if(ex instanceof HttpRequestMethodNotSupportedException) {

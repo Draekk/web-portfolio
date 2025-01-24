@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.draekkdev.springboot.web_portfolio.helpers.CustomMessages;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -31,6 +33,15 @@ public class ResponseDto<T> {
         success = true;
         timestamp = LocalDateTime.now();
         error = new HashMap<>();
+    }
+
+    public ResponseDto(CustomMessages customMessages, String path, T data) {
+        message = customMessages.getMessage();
+        statusCode = customMessages.getStatus();
+        this.path = path;
+        this.data = data;
+        success = true;
+        timestamp = LocalDateTime.now();
     }
 
     public ResponseDto(String message, Integer statusCode, String path, T data) {
