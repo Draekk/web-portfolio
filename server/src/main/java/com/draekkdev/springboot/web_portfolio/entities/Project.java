@@ -34,7 +34,7 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 100, unique = true)
     private String name;
 
     @Lob
@@ -44,7 +44,7 @@ public class Project {
     @Column(nullable = false)
     private LocalDate creationDate;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String url;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)

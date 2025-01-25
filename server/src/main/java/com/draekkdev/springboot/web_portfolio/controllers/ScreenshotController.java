@@ -44,7 +44,7 @@ public class ScreenshotController {
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
-    @GetMapping("/find/{id}")
+    @GetMapping("/find/id/{id}")
     public ResponseEntity<ResponseDto<ScreenshotDetailedDto>> findScreenshotById(@PathVariable Integer id, HttpServletRequest request) {
         ResponseDto<ScreenshotDetailedDto> response = new ResponseDto<>(
             CustomMessages.FOUND, request.getRequestURI(), service.findScreenshotById(id)
@@ -52,7 +52,7 @@ public class ScreenshotController {
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/id/{id}")
     public ResponseEntity<ResponseDto<?>> deleteScreenshotById(@PathVariable Integer id, HttpServletRequest request) {
         service.deleteScreenshotById(id);
         ResponseDto<ScreenshotDetailedDto> response = new ResponseDto<>(
