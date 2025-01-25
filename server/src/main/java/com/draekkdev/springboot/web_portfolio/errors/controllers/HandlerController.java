@@ -9,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingPathVariableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import com.draekkdev.springboot.web_portfolio.errors.CustomException;
 import com.draekkdev.springboot.web_portfolio.models.dtos.ResponseDto;
@@ -52,7 +53,8 @@ public class HandlerController {
         HttpRequestMethodNotSupportedException.class,
         DataIntegrityViolationException.class,
         HttpMessageNotReadableException.class,
-        MissingPathVariableException.class
+        MissingPathVariableException.class,
+        NoResourceFoundException.class
     })
     public ResponseEntity<ResponseDto<?>> globalErrorHandler(Exception ex, HttpServletRequest request) {
         ResponseDto<?> response = new ResponseDto<>();

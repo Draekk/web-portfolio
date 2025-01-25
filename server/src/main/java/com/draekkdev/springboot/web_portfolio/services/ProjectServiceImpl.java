@@ -49,7 +49,7 @@ public class ProjectServiceImpl implements ProjectService {
         List<Technology> technologies = (List<Technology>)technologyRepository.findAllById(json.getTechnologyIdList());
 
         if(technologies.size() != json.getTechnologyIdList().size())
-            throw new CustomException(ErrorCode.NOT_FOUND);
+            throw new CustomException(ErrorCode.NOT_FOUND, "Some Technologies were not found.");
 
         project.setTechnologies(technologies);
 
