@@ -45,7 +45,7 @@ public class ProjectController {
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
-    @GetMapping("/find/all")
+    @GetMapping({"", "/", "/find", "/find/all"})
     public ResponseEntity<ResponseDto<?>> findAllProjects(HttpServletRequest request) {
         ResponseDto<List<ProjectDetailedDto>> response = new ResponseDto<>(
             CustomMessages.FOUND, request.getRequestURI(), service.findAllProjects()
@@ -53,7 +53,7 @@ public class ProjectController {
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
-    @GetMapping("/find/id/{id}")
+    @GetMapping({"/find/{id}", "/find/id/{id}"})
     public ResponseEntity<ResponseDto<ProjectDetailedDto>> findProjectById(@PathVariable Integer id, HttpServletRequest request) {
         ResponseDto<ProjectDetailedDto> response = new ResponseDto<ProjectDetailedDto>(
             CustomMessages.FOUND, request.getRequestURI(), service.findProjectById(id)
@@ -69,7 +69,7 @@ public class ProjectController {
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
-    @DeleteMapping("/delete/id/{id}")
+    @DeleteMapping({"/delete/{id}", "/delete/id/{id}"})
     public ResponseEntity<ResponseDto<?>> deleteProjectById(@PathVariable Integer id, HttpServletRequest request) {
         service.deleteProjectById(id);
         ResponseDto<ProjectDetailedDto> response = new ResponseDto<ProjectDetailedDto>(
