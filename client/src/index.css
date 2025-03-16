@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+html {
+    background-image: url('https://res.cloudinary.com/dhaha1ozm/image/upload/v1741723108/purple-bg_opquvw.webp');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
