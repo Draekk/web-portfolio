@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "./components/header/Header";
+import Hero from "./components/hero/Hero";
 import "./App.css";
 
 function App() {
@@ -29,7 +30,9 @@ function App() {
         navPopUp={navPopUp}
         setNavPopUp={setNavPopUp}
       ></Header>
-      <main onClick={() => setNavPopUp(false)} className="h-full"></main>
+      <main onClick={() => setNavPopUp(false)} className="h-full">
+        <Hero></Hero>
+      </main>
     </>
   );
 }
