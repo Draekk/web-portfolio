@@ -30,7 +30,7 @@ function App() {
         navPopUp={navPopUp}
         setNavPopUp={setNavPopUp}
       ></Header>
-      <main onClick={() => setNavPopUp(false)} className="h-full">
+      <main onClick={() => setNavPopUp(false)} className="grid grid-cols-1 justify-items-center">
         <Hero></Hero>
       </main>
     </>
