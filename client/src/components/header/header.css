@@ -1,0 +1,5 @@
+.menu-ico:hover {
+  background: none;
+  box-shadow: 0 0 10px -5px rgba(250, 0, 0, 0.5),
+    0 0 20px -5px rgba(100, 50, 255, 0.5);
+}
