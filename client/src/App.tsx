@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "./components/header/Header";
 import Hero from "./components/hero/Hero";
+import PExperience from "./components/personal_experience/PExperience";
 import "./App.css";
 
 function App() {
@@ -30,8 +31,12 @@ function App() {
         navPopUp={navPopUp}
         setNavPopUp={setNavPopUp}
       ></Header>
-      <main onClick={() => setNavPopUp(false)} className="grid grid-cols-1 justify-items-center">
+      <main
+        onClick={() => setNavPopUp(false)}
+        className="flex flex-col items-center gap-y-10"
+      >
         <Hero></Hero>
+        <PExperience></PExperience>
       </main>
     </>
   );

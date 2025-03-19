@@ -21,6 +21,7 @@ function Header({ isMobile, navPopUp, setNavPopUp }: THeaderProps) {
                   onClick={() => setNavPopUp(true)}
                   className="menu-ico overflow-hidden rounded-full py-0.5 hover:cursor-pointer hue-rotate-60 hover:hue-rotate-390 hover:-rotate-720 duration-700"
                 >
+                  {/* TODO: Change hover configuration to the menu button */}
                   <p className="font-black text-3xl pb-0.5">🌀</p>
                 </div>
               </>
