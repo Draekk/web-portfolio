@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
-html {
+body {
   background-image: url("https://res.cloudinary.com/dhaha1ozm/image/upload/v1741723108/purple-bg_opquvw.webp");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  overflow: hidden;
   height: 100vh;
 }
 
@@ -12,5 +13,4 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  row-gap: 20px;
 }

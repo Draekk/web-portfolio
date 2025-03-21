@@ -8,7 +8,7 @@ type THeaderProps = {
 
 function Header({ isMobile, navPopUp, setNavPopUp }: THeaderProps) {
   return (
-    <header className="py-0 my-0 h-16 bg-none flex justify-between items-center px-2.5">
+    <header className="py-0 my-0 h-[15vh] bg-none flex justify-between items-center px-2.5">
       <h1 className="text-nowrap font-bold text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white">
         WEB PORTFOLIO
       </h1>

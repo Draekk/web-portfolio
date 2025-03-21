@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/header/Header";
 import Hero from "./components/hero/Hero";
 import PExperience from "./components/personal_experience/PExperience";
+import Technologies from "./components/technologies/Technologies";
 import "./App.css";
 
 function App() {
@@ -33,10 +34,26 @@ function App() {
       ></Header>
       <main
         onClick={() => setNavPopUp(false)}
-        className="flex flex-col items-center gap-y-10"
+        className="
+          flex
+          flex-col
+          items-center
+          gap-y-10
+          bg-dark-transparent 
+          w-full 
+          md:max-w-[780px] 
+          lg:max-w-[900px] 
+          mx-auto 
+          p-1 
+          md:p-3 
+          text-justify 
+          overflow-scroll 
+          h-[85vh]
+        "
       >
         <Hero></Hero>
         <PExperience></PExperience>
+        <Technologies></Technologies>
       </main>
     </>
   );
