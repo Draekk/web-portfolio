@@ -1,0 +1,7 @@
+.bg-dark-transparent {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+main::-webkit-scrollbar {
+  display: none;
+}
