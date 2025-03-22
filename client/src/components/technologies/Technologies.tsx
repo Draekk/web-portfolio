@@ -27,7 +27,10 @@ function Technologies() {
   };
 
   return (
-    <section className="flex flex-col gap-y-3 text-white w-full">
+    <section
+      id="technologies"
+      className="flex flex-col gap-y-3 text-white w-full"
+    >
       <h2 className="font-black text-2xl lg:text-4xl justify-content-start">
         TECHNOLOGIES
       </h2>

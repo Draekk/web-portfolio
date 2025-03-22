@@ -34,7 +34,7 @@ function Header({ isMobile, navPopUp, setNavPopUp }: THeaderProps) {
                   <li className="h-full">
                     <a
                       className="text-white font-semibold h-full flex items-center"
-                      href="#"
+                      href="#home"
                     >
                       Home
                     </a>
@@ -42,7 +42,7 @@ function Header({ isMobile, navPopUp, setNavPopUp }: THeaderProps) {
                   <li className="h-full">
                     <a
                       className="text-white font-semibold h-full flex items-center"
-                      href="#"
+                      href="#technologies"
                     >
                       Technologies
                     </a>
@@ -65,7 +65,7 @@ function Header({ isMobile, navPopUp, setNavPopUp }: THeaderProps) {
               <li className="h-full">
                 <a
                   className="text-white font-semibold h-full flex items-center lg:text-lg xl:text-xl"
-                  href="#"
+                  href="#home"
                 >
                   Home
                 </a>
@@ -73,7 +73,7 @@ function Header({ isMobile, navPopUp, setNavPopUp }: THeaderProps) {
               <li className="h-full">
                 <a
                   className="text-white font-semibold h-full flex items-center lg:text-lg xl:text-xl"
-                  href="#"
+                  href="#technologies"
                 >
                   Technologies
                 </a>
