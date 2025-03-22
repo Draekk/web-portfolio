@@ -1,9 +1,7 @@
 package com.draekkdev.springboot.web_portfolio.models.dtos;
 
-import java.util.List;
-
 import com.draekkdev.springboot.web_portfolio.entities.Technology;
-
+import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,16 +13,19 @@ import lombok.ToString;
 @ToString
 public class TechnologyDetailedDto {
 
-    private Long id;
-    
-    private String name;
+  private Long id;
 
-    private List<ProjectSummaryDto> projects;
+  private String name;
 
-    public TechnologyDetailedDto(Technology technology) {
-        id = technology.getId();
-        name = technology.getName();
-        if(technology.getProjects() != null)
-            projects = technology.getProjects().stream().map(ProjectSummaryDto::new).toList();
-    }
+  private String logoUrl;
+
+  private List<ProjectSummaryDto> projects;
+
+  public TechnologyDetailedDto(Technology technology) {
+    id = technology.getId();
+    name = technology.getName();
+    logoUrl = technology.getLogoUrl();
+    if (technology.getProjects() != null) projects =
+      technology.getProjects().stream().map(ProjectSummaryDto::new).toList();
+  }
 }
