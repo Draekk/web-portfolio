@@ -1,6 +1,11 @@
 import { TTech } from "../../types/tech";
 
-function Technology({ logoUrl, name }: TTech) {
+type TTechnologyProps = TTech & {
+  selectTech: boolean;
+  toggleTech: () => void;
+};
+
+function Technology({ logoUrl, name, toggleTech }: TTechnologyProps) {
   const ICON_ANIM: string = "icon-anim";
   const TRANSITION_1S: string = "transition-1s";
   const CARD_ANIM: string = "card-anim";
@@ -9,6 +14,7 @@ function Technology({ logoUrl, name }: TTech) {
   const cardEffectEnter = (e: React.MouseEvent<HTMLDivElement>) => {
     const ICON: HTMLElement | null = e.currentTarget.querySelector("figure");
     const SPAN: HTMLSpanElement | null = e.currentTarget.querySelector("span");
+
     ICON?.classList.add(ICON_ANIM);
     ICON?.classList.remove(TRANSITION_1S);
     SPAN?.classList.add(SPAN_SHADOW);
@@ -19,6 +25,7 @@ function Technology({ logoUrl, name }: TTech) {
   const cardEffectLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     const ICON: HTMLElement | null = e.currentTarget.querySelector("figure");
     const SPAN: HTMLSpanElement | null = e.currentTarget.querySelector("span");
+
     ICON?.classList.remove(ICON_ANIM);
     ICON?.classList.add(TRANSITION_1S);
     SPAN?.classList.remove(SPAN_SHADOW);
@@ -30,12 +37,16 @@ function Technology({ logoUrl, name }: TTech) {
     <div
       onMouseEnter={cardEffectEnter}
       onMouseLeave={cardEffectLeave}
-      className="flex flex-col justify-center items-center tech-card"
+      onClick={toggleTech}
+      className="flex flex-col justify-center items-center tech-card hover:cursor-pointer"
+      title={"Ver proyectos con ".concat(name)}
     >
-      <figure className="w-28 h-28 bg-white rounded-full overflow-hidden p-1 flex items-center">
-        <img src={logoUrl} alt={name} className="w-full" />
+      <figure className="w-14 h-14 lg:w-28 md:h-28 rounded-full p-1 flex items-center justify-center">
+        <img src={logoUrl} alt={name} className="w-[75%]" />
       </figure>
-      <span className="text-white capitalize">{name}</span>
+      <span className="text-white text-sm md:text-lg lg:text-xl capitalize">
+        {name}
+      </span>
     </div>
   );
 }

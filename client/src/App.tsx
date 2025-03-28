@@ -38,7 +38,7 @@ function App() {
           flex
           flex-col
           items-center
-          gap-y-10
+          gap-y-20
           bg-dark-transparent 
           w-full 
           md:max-w-[780px] 
@@ -47,13 +47,18 @@ function App() {
           p-1 
           md:p-3 
           text-justify 
-          overflow-scroll 
           h-[85vh]
         "
       >
-        <Hero></Hero>
-        <PExperience></PExperience>
-        <Technologies></Technologies>
+        <div className="scroll-section">
+          <Hero></Hero>
+        </div>
+        <div className="scroll-section">
+          <PExperience></PExperience>
+        </div>
+        <div className="scroll-section">
+          <Technologies></Technologies>
+        </div>
       </main>
     </>
   );
