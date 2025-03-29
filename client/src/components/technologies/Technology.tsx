@@ -1,6 +1,6 @@
-import { TTech } from "../../types/tech";
+import { tTechnology } from "../../types/tTechnology";
 
-type TTechnologyProps = TTech & {
+type TTechnologyProps = tTechnology & {
   selectTech: boolean;
   toggleTech: () => void;
 };

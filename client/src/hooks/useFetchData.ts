@@ -1,24 +1,28 @@
-import { useEffect, useState } from "react";
-import { TTech } from "../types/tech";
+import { tDetailedTechnology, tTechnology } from "../types/tTechnology";
 
 function useFetchData() {
   const SERVER_URL: string = "http://localhost:8080/api";
+  const TECHNOLOGY: string = "/technology";
 
-  const [techs, setTechs] = useState(Array<TTech>);
-
-  const fetchTechnologies = async () => {
-    const res = await fetch(SERVER_URL.concat("/technology/find/all"));
+  const findAllTechnologies = async (): Promise<tDetailedTechnology[]> => {
+    const res = await fetch(SERVER_URL.concat(TECHNOLOGY).concat("/find/all"));
     const data = await res.json();
 
-    setTechs(data.data);
+    return data.data;
   };
 
-  useEffect(() => {
-    fetchTechnologies();
-  }, []);
+  const findTechnologyById = async (id: number) => {
+    const res = await fetch(
+      SERVER_URL.concat(TECHNOLOGY).concat("/find/id/") + id
+    );
+    const data = await res.json();
+
+    return data.data;
+  };
 
   return {
-    techs,
+    findAllTechnologies,
+    findTechnologyById,
   };
 }
 

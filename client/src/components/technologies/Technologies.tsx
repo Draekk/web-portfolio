@@ -1,12 +1,10 @@
 import "./technologies.css";
-import { useFetchData } from "../../hooks/useFetchData";
 import Technology from "./Technology";
 import { useTechnology } from "../../hooks/useTechnology";
 import TechViewer from "./TechViewer";
 
 function Technologies() {
-  const { techs } = useFetchData();
-  const { selectTech, toggleTech } = useTechnology();
+  const { techList, selectTech, toggleTech } = useTechnology();
 
   return (
     <section
@@ -16,14 +14,14 @@ function Technologies() {
       <h2 className="font-black text-2xl lg:text-4xl justify-content-start">
         TECHNOLOGIES
       </h2>
-      <div className="flex flex-col justify-start items-center w-full">
+      <div className="flex flex-col justify-start items-center w-full h-full">
         <div
           className={`flex justify-center items-center ${
             selectTech ? "tech-selected" : "tech-unselected"
           }`}
         >
-          {techs.length > 0 ? (
-            techs.map((tech) => (
+          {techList.length > 0 ? (
+            techList.map((tech) => (
               <Technology
                 key={tech.id}
                 id={tech.id}
@@ -38,9 +36,7 @@ function Technologies() {
           )}
         </div>
         {selectTech ? (
-          <>
-            <TechViewer></TechViewer>
-          </>
+          <>{/* <TechViewer tech={tech} projects={projects}></TechViewer> */}</>
         ) : (
           <></>
         )}
