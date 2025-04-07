@@ -5,7 +5,12 @@ type TTechnologyProps = tTechnology & {
   toggleTech: () => void;
 };
 
-function Technology({ logoUrl, name, toggleTech }: TTechnologyProps) {
+function Technology({
+  logoUrl,
+  name,
+  selectTech,
+  toggleTech,
+}: TTechnologyProps) {
   const ICON_ANIM: string = "icon-anim";
   const TRANSITION_1S: string = "transition-1s";
   const CARD_ANIM: string = "card-anim";
@@ -35,9 +40,12 @@ function Technology({ logoUrl, name, toggleTech }: TTechnologyProps) {
 
   return (
     <div
-      onMouseEnter={cardEffectEnter}
-      onMouseLeave={cardEffectLeave}
-      onClick={toggleTech}
+      onMouseEnter={(e) => (!selectTech ? cardEffectEnter(e) : null)}
+      onMouseLeave={(e) => (!selectTech ? cardEffectLeave(e) : null)}
+      onClick={(e) => {
+        toggleTech();
+        cardEffectLeave(e);
+      }}
       className="flex flex-col justify-center items-center tech-card hover:cursor-pointer"
       title={"Ver proyectos con ".concat(name)}
     >

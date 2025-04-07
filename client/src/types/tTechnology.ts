@@ -1,4 +1,4 @@
-import { tProject } from "./tProject";
+import { tDetailedProject } from "./tProject";
 
 export type tTechnology = {
   id: number;
@@ -7,5 +7,5 @@ export type tTechnology = {
 };
 
 export type tDetailedTechnology = tTechnology & {
-  projects: tProject[];
+  projects: tDetailedProject[];
 };

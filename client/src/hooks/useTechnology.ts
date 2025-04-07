@@ -1,17 +1,24 @@
 import { useEffect, useState } from "react";
 import { useFetchData } from "./useFetchData";
-import { tDetailedTechnology, tTechnology } from "../types/tTechnology";
-import { tDetailedProject } from "../types/tProject";
+import { tDetailedTechnology } from "../types/tTechnology";
 
 export const useTechnology = () => {
-  const { findAllTechnologies, findTechnologyById } = useFetchData();
+  const { findAllTechnologies } = useFetchData();
+
+  const newTech: tDetailedTechnology = {
+    id: 0,
+    name: "",
+    logoUrl: "",
+    projects: [],
+  };
 
   const [techList, setTechList] = useState(Array<tDetailedTechnology>);
-  const [projectList, setProjectList] = useState(Array<tDetailedProject>);
+  const [tech, setTech] = useState(newTech);
   const [selectTech, setSelectTech] = useState(false);
 
   const fetchTechnologies: () => void = async () => {
-    setTechList(await findAllTechnologies());
+    const tempTechList = await findAllTechnologies();
+    tempTechList !== null ? setTechList(tempTechList) : null;
   };
 
   useEffect(() => {
@@ -21,16 +28,19 @@ export const useTechnology = () => {
   const toggleTech: (id: number) => void = async (id) => {
     setSelectTech(!selectTech);
 
-    const projects = techList
-      .filter((tech) => tech.id === id)
-      .map((tech) => tech.projects);
+    const tempTech: tDetailedTechnology | undefined = techList.find(
+      (tech) => tech.id === id
+    );
 
-    console.log(projects);
+    if (tempTech !== undefined) {
+      setTech(tempTech);
+      console.log(tech.projects);
+    }
   };
 
   return {
     techList,
-    projectList,
+    tech,
     selectTech,
     toggleTech,
   };

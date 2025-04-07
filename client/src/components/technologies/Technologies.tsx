@@ -4,7 +4,7 @@ import { useTechnology } from "../../hooks/useTechnology";
 import TechViewer from "./TechViewer";
 
 function Technologies() {
-  const { techList, selectTech, toggleTech } = useTechnology();
+  const { techList, tech, selectTech, toggleTech } = useTechnology();
 
   return (
     <section
@@ -16,7 +16,7 @@ function Technologies() {
       </h2>
       <div className="flex flex-col justify-start items-center w-full h-full">
         <div
-          className={`flex justify-center items-center ${
+          className={`flex justify-center items-center overflow-y-scroll scroll-smooth ${
             selectTech ? "tech-selected" : "tech-unselected"
           }`}
         >
@@ -35,11 +35,7 @@ function Technologies() {
             <></>
           )}
         </div>
-        {selectTech ? (
-          <>{/* <TechViewer tech={tech} projects={projects}></TechViewer> */}</>
-        ) : (
-          <></>
-        )}
+        {selectTech ? <TechViewer tech={tech}></TechViewer> : <></>}
       </div>
     </section>
   );

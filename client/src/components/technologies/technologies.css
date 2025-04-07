@@ -1,3 +1,7 @@
+#technologies h2 ~ div > div::-webkit-scrollbar {
+  display: none;
+}
+
 .icon-anim {
   box-shadow: -10px 10px 40px 5px rgba(145, 11, 235, 0.5) inset,
     0 0 10px 5px rgba(255, 255, 255, 0.35);
@@ -7,7 +11,7 @@
 }
 
 .card-anim {
-  scale: 1.3;
+  scale: 1.1;
   position: relative;
   transition: 0.1s;
 }

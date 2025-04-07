@@ -56,7 +56,7 @@ function App() {
         <div className="scroll-section">
           <PExperience></PExperience>
         </div>
-        <div className="scroll-section">
+        <div className="scroll-section w-full">
           <Technologies></Technologies>
         </div>
       </main>
