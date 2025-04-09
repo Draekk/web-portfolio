@@ -12,9 +12,14 @@ export const useTechnology = () => {
     projects: [],
   };
 
+  const selectedTech: { enabled: boolean; id: number } = {
+    enabled: false,
+    id: 0,
+  };
+
   const [techList, setTechList] = useState(Array<tDetailedTechnology>);
   const [tech, setTech] = useState(newTech);
-  const [selectTech, setSelectTech] = useState(false);
+  const [selectTech, setSelectTech] = useState(selectedTech);
 
   const fetchTechnologies: () => void = async () => {
     const tempTechList = await findAllTechnologies();
@@ -26,7 +31,11 @@ export const useTechnology = () => {
   }, []);
 
   const toggleTech: (id: number) => void = async (id) => {
-    setSelectTech(!selectTech);
+    setSelectTech((prevState) => {
+      return prevState.id === id
+        ? { enabled: false, id: 0 }
+        : { enabled: true, id: id };
+    });
 
     const tempTech: tDetailedTechnology | undefined = techList.find(
       (tech) => tech.id === id

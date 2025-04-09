@@ -1,5 +1,3 @@
-import "./header.css";
-
 type THeaderProps = {
   isMobile: boolean;
   navPopUp: boolean;
@@ -16,20 +14,15 @@ function Header({ isMobile, navPopUp, setNavPopUp }: THeaderProps) {
         {isMobile ? (
           <>
             {!navPopUp ? (
-              <>
-                <div
-                  onClick={() => setNavPopUp(true)}
-                  className="menu-ico overflow-hidden rounded-full py-0.5 hover:cursor-pointer hue-rotate-60 hover:hue-rotate-390 hover:-rotate-720 duration-700"
-                >
-                  {/* TODO: Change hover configuration to the menu button */}
-                  <p className="font-black text-3xl pb-0.5">🌀</p>
-                </div>
-              </>
+              <i
+                onClick={() => setNavPopUp(true)}
+                className="fa-solid fa-bars text-white text-2xl"
+              ></i>
             ) : (
               <>
                 <ul
                   onClick={() => setNavPopUp(false)}
-                  className="absolute top-6 flex flex-col gap-2.5"
+                  className="absolute top-4 right-0 flex flex-col items-end gap-2.5 p-2"
                 >
                   <li className="h-full">
                     <a
@@ -37,6 +30,14 @@ function Header({ isMobile, navPopUp, setNavPopUp }: THeaderProps) {
                       href="#home"
                     >
                       Home
+                    </a>
+                  </li>
+                  <li className="h-full">
+                    <a
+                      className="text-white font-semibold h-full flex items-center"
+                      href="#personal-experience"
+                    >
+                      Experience
                     </a>
                   </li>
                   <li className="h-full">
@@ -68,6 +69,14 @@ function Header({ isMobile, navPopUp, setNavPopUp }: THeaderProps) {
                   href="#home"
                 >
                   Home
+                </a>
+              </li>
+              <li className="h-full">
+                <a
+                  className="text-white font-semibold h-full flex items-center lg:text-lg xl:text-xl"
+                  href="#personal-experience"
+                >
+                  Experience
                 </a>
               </li>
               <li className="h-full">

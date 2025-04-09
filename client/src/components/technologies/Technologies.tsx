@@ -17,7 +17,7 @@ function Technologies() {
       <div className="flex flex-col justify-start items-center w-full h-full">
         <div
           className={`flex justify-center items-center overflow-y-scroll scroll-smooth ${
-            selectTech ? "tech-selected" : "tech-unselected"
+            selectTech.enabled ? "tech-selected" : "tech-unselected"
           }`}
         >
           {techList.length > 0 ? (
@@ -27,7 +27,7 @@ function Technologies() {
                 id={tech.id}
                 name={tech.name}
                 logoUrl={tech.logoUrl}
-                selectTech={selectTech}
+                selectTech={selectTech.enabled}
                 toggleTech={() => toggleTech(tech.id)}
               ></Technology>
             ))
@@ -35,7 +35,7 @@ function Technologies() {
             <></>
           )}
         </div>
-        {selectTech ? <TechViewer tech={tech}></TechViewer> : <></>}
+        {selectTech.enabled ? <TechViewer tech={tech}></TechViewer> : <></>}
       </div>
     </section>
   );

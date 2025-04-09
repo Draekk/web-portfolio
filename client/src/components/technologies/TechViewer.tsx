@@ -10,7 +10,7 @@ function TechViewer({ tech }: TTechViewerProps) {
   return (
     <section className="w-full h-full overflow-hidden">
       <h1 className="uppercase pt-6 pb-3 font-black">{tech.name}</h1>
-      <div className="overflow-y-scroll scroll-smooth grid grid-cols-1 gap-5 h-[95%] scroll-hidden">
+      <div className="overflow-y-scroll scroll-smooth grid grid-cols-1 gap-5 h-[85%] scroll-hidden">
         {tech.projects.length > 0 ? (
           tech.projects.map((p) => (
             <ProjectSummary key={p.id} project={p}></ProjectSummary>

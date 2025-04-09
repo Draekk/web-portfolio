@@ -8,11 +8,11 @@ import "./App.css";
 function App() {
   const [navPopUp, setNavPopUp] = useState(false);
   const [isMobile, setIsMobile] = useState(
-    window.matchMedia("(max-width: 640px)").matches
+    window.matchMedia("(max-width: 760px)").matches
   );
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 640px)");
+    const mediaQuery = window.matchMedia("(max-width: 760px)");
 
     const handleResize = (e: {
       matches: boolean | ((prevState: boolean) => boolean);
@@ -44,10 +44,9 @@ function App() {
           md:max-w-[780px] 
           lg:max-w-[900px] 
           mx-auto 
-          p-1 
+          px-1 
           md:p-3 
           text-justify 
-          h-[85vh]
         "
       >
         <div className="scroll-section">

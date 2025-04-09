@@ -1,6 +1,9 @@
 function PExperience() {
   return (
-    <section className="flex flex-col gap-y-3 text-white h-[80vh]">
+    <section
+      id="personal-experience"
+      className="flex flex-col gap-y-3 text-white h-[80vh]"
+    >
       <h2 className="font-black text-2xl lg:text-4xl">PERSONAL EXPERIENCE</h2>
       <p className="text-sm md:text-lg lg:text-xl">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam corporis
