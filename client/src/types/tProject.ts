@@ -1,6 +1,6 @@
 import { tTechnology } from "./tTechnology";
 
-type tScreenshot = {
+export type tScreenshot = {
   id: number;
   url: string;
 };
