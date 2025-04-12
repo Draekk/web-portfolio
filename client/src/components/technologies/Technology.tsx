@@ -49,7 +49,7 @@ function Technology({
       className="flex flex-col justify-center items-center tech-card hover:cursor-pointer"
       title={"Ver proyectos con ".concat(name)}
     >
-      <figure className="w-14 h-14 lg:w-28 md:h-28 rounded-full p-1 flex items-center justify-center">
+      <figure className="w-14 h-14 lg:w-28 lg:h-28 rounded-full p-1 flex items-center justify-center">
         <img src={logoUrl} alt={name} className="w-[75%]" />
       </figure>
       <span className="text-white text-sm md:text-lg lg:text-xl capitalize">

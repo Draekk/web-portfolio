@@ -16,7 +16,7 @@ function ScreenshotViewer({
   return (
     <div
       id="screenshot-viewer"
-      className="absolute h-screen top-0 w-screen flex flex-col justify-center items-center"
+      className="absolute h-screen top-0 left-0 w-screen flex flex-col justify-center items-center"
     >
       <div
         onClick={() => setScreenshotViewer(false)}

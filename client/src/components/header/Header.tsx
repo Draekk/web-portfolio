@@ -1,12 +1,24 @@
 type THeaderProps = {
   isMobile: boolean;
   navPopUp: boolean;
+  contactPanel: boolean;
   setNavPopUp: React.Dispatch<React.SetStateAction<boolean>>;
+  setContactPanel: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function Header({ isMobile, navPopUp, setNavPopUp }: THeaderProps) {
+function Header({
+  isMobile,
+  navPopUp,
+  contactPanel,
+  setNavPopUp,
+  setContactPanel,
+}: THeaderProps) {
   return (
-    <header className="py-0 my-0 h-[15vh] bg-none flex justify-between items-center px-2.5">
+    <header
+      className={`py-0 my-0 h-[15vh] bg-none flex justify-between items-center px-2.5 ${
+        contactPanel ? "pointer-events-none" : ""
+      }`}
+    >
       <h1 className="text-nowrap font-bold text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white">
         WEB PORTFOLIO
       </h1>
@@ -14,10 +26,12 @@ function Header({ isMobile, navPopUp, setNavPopUp }: THeaderProps) {
         {isMobile ? (
           <>
             {!navPopUp ? (
-              <i
-                onClick={() => setNavPopUp(true)}
-                className="fa-solid fa-bars text-white text-2xl"
-              ></i>
+              <button disabled={contactPanel} className="disabled:hidden">
+                <i
+                  onClick={() => setNavPopUp(true)}
+                  className="fa-solid fa-bars text-white text-2xl"
+                ></i>
+              </button>
             ) : (
               <>
                 <ul
@@ -52,6 +66,7 @@ function Header({ isMobile, navPopUp, setNavPopUp }: THeaderProps) {
                     <a
                       className="text-white font-semibold h-full flex items-center"
                       href="#"
+                      onClick={() => setContactPanel(true)}
                     >
                       Contact me
                     </a>
@@ -87,10 +102,11 @@ function Header({ isMobile, navPopUp, setNavPopUp }: THeaderProps) {
                   Technologies
                 </a>
               </li>
-              <li className="h-full">
+              <li className="h-full lg:hidden">
                 <a
                   className="text-white font-semibold h-full flex items-center lg:text-lg xl:text-xl"
                   href="#"
+                  onClick={() => setContactPanel(true)}
                 >
                   Contact me
                 </a>
