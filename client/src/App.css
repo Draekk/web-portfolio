@@ -23,3 +23,7 @@ main::-webkit-scrollbar {
   justify-content: center;
   scroll-snap-align: start;
 }
+
+.aside-shadow {
+  box-shadow: 10px 0px 10px 0px rgba(66, 0, 128, 0.582);
+}

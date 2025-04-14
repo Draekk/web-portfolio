@@ -102,7 +102,7 @@ function Header({
                   Technologies
                 </a>
               </li>
-              <li className="h-full lg:hidden">
+              <li className="h-full xl:hidden">
                 <a
                   className="text-white font-semibold h-full flex items-center lg:text-lg xl:text-xl"
                   href="#"

@@ -10,14 +10,12 @@ function ContactCard({ imgUrl, url, text }: tContactCardProps) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center justify-start mx-5 w-full lg:w-[200px] px-2 cursor-pointer border-2 border-dashed border-white rounded-xl"
+      className="flex items-center justify-start mx-5 w-full max-w-[350px] px-2 py-3 cursor-pointer border border-t-purple-500 border-purple-300 rounded-xl hover:scale-105 hover:border-dashed hover:bg-purple-950 hover:font-black hover:relative transition-all"
     >
-      <figure className="w-8 h-8 overflow-hidden">
-        <img src={imgUrl} alt={text} />
+      <figure className="w-8 h-8 overflow-hidden flex justify-center items-center">
+        <img className="w-full" src={imgUrl} alt={text} />
       </figure>
-      <span className="text-sm md:text-lg lg:text-xl text-white w-full">
-        {text}
-      </span>
+      <span className="text-lg lg:text-xl text-white w-full ml-3">{text}</span>
     </a>
   );
 }
