@@ -1,24 +1,17 @@
-/* .ico-shadow {
-  transition: 2s;
+#technologies h2 ~ div > div::-webkit-scrollbar {
+  display: none;
 }
 
-.ico-shadow:hover {
-  box-shadow: 0 0 20px 2px rgba(145, 11, 235, 0.5) inset,
-    0 0 50px rgba(255, 255, 255, 0.35);
-  scale: 1.3;
-  position: relative;
-  transition: 0.1s;
-} */
-
 .icon-anim {
-  box-shadow: 0 0 15px 5px rgba(145, 11, 235, 0.5) inset,
+  box-shadow: -10px 10px 40px 5px rgba(145, 11, 235, 0.5) inset,
     0 0 10px 5px rgba(255, 255, 255, 0.35);
   transition: 0.1s;
   z-index: 1;
+  transform: rotateY(360deg);
 }
 
 .card-anim {
-  scale: 1.3;
+  scale: 1.1;
   position: relative;
   transition: 0.1s;
 }
@@ -30,4 +23,33 @@
 .span-shadow {
   text-shadow: 1px 1px 3px rgb(181, 123, 228), 1px 1px 3px rgb(147, 47, 230);
   z-index: 0;
+}
+
+.tech-selected {
+  transition: 1s;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+.tech-selected .tech-card figure {
+  width: 30px;
+  height: 30px;
+}
+
+.tech-selected .tech-card span {
+  display: none;
+}
+
+.tech-unselected {
+  flex-wrap: wrap;
+  column-gap: 36px;
+  row-gap: 40px;
+  padding-block: 20px;
+}
+
+@media (min-width: 768px) {
+  .tech-selected .tech-card figure {
+    width: 56px;
+    height: 56px;
+  }
 }
