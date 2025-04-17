@@ -43,9 +43,13 @@ function ProjectSummary({ project, picUrl, setPicUrl }: tProjectSummaryProps) {
           <div className="flex flex-col-reverse md:flex-row justify-between">
             <button
               onClick={() => setScreenshotPanel(!screenshotPanel)}
-              className="cursor-pointer font-black hover:shadow-sm hover:shadow-purple-600 rounded-full p-2 md:px-6 md:py-0 my-3 bg-purple-700"
+              className={`${
+                screenshotPanel
+                  ? "bg-red-700 hover:bg-red-600"
+                  : "bg-purple-700 hover:shadow-purple-600"
+              } cursor-pointer font-black hover:shadow-sm  rounded-full p-2 md:px-6 md:py-0 my-3 `}
             >
-              Screenshots
+              {screenshotPanel ? "Close" : "Screenshots"}
             </button>
             <ul className="flex flex-wrap justify-center md:justify-end gap-x-5 justify-self-end w-full md:w-[70%]">
               {project.technologies.length > 0 ? (

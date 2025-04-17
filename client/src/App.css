@@ -27,3 +27,11 @@ main::-webkit-scrollbar {
 .aside-shadow {
   box-shadow: 10px 0px 10px 0px rgba(66, 0, 128, 0.582);
 }
+
+.aside-shadow-none {
+  box-shadow: none;
+}
+
+.nav-shadow {
+  box-shadow: -10px 10px 10px 0px rgba(66, 0, 128, 0.582);
+}

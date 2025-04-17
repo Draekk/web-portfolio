@@ -1,3 +1,5 @@
+import "../../App.css";
+
 type THeaderProps = {
   isMobile: boolean;
   navPopUp: boolean;
@@ -36,35 +38,32 @@ function Header({
               <>
                 <ul
                   onClick={() => setNavPopUp(false)}
-                  className="absolute top-4 right-0 flex flex-col items-end gap-2.5 p-2"
+                  className="absolute top-16 right-0 grid pl-3 pr-2 py-2 border border-r-0 rounded-l-xl border-t-purple-600 border-purple-300 bg-black nav-shadow"
                 >
-                  <li className="h-full">
-                    <a
-                      className="text-white font-semibold h-full flex items-center"
-                      href="#home"
-                    >
+                  <li className="h-full w-full border-b border-b-purple-300 flex justify-end pr-2 pb-1">
+                    <a className="text-white font-semibold h-full" href="#home">
                       Home
                     </a>
                   </li>
-                  <li className="h-full">
+                  <li className="h-full w-full border-b border-b-purple-300 flex justify-end pr-2 py-1">
                     <a
-                      className="text-white font-semibold h-full flex items-center"
+                      className="text-white font-semibold h-full"
                       href="#personal-experience"
                     >
                       Experience
                     </a>
                   </li>
-                  <li className="h-full">
+                  <li className="h-full w-full border-b border-b-purple-300 flex justify-end pr-2 py-1">
                     <a
-                      className="text-white font-semibold h-full flex items-center"
+                      className="text-white font-semibold h-full"
                       href="#technologies"
                     >
                       Technologies
                     </a>
                   </li>
-                  <li className="h-full">
+                  <li className="h-full w-full flex justify-end pr-2 pt-1">
                     <a
-                      className="text-white font-semibold h-full flex items-center"
+                      className="text-white font-semibold h-full"
                       href="#"
                       onClick={() => setContactPanel(true)}
                     >

@@ -12,6 +12,9 @@ function App() {
   const [isMobile, setIsMobile] = useState(
     window.matchMedia("(max-width: 760px)").matches
   );
+  const [isWide, setIsWide] = useState(
+    window.matchMedia("(min-width: 1280px)").matches
+  );
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 760px)");
@@ -19,12 +22,25 @@ function App() {
     const handleResize = (e: {
       matches: boolean | ((prevState: boolean) => boolean);
     }) => {
-      setIsMobile(e.matches); // Actualiza el estado cuando cambia el tamaño de la pantalla
+      setIsMobile(e.matches);
       setNavPopUp(false);
     };
 
-    mediaQuery.addEventListener("change", handleResize); // Escucha cambios de tamaño
-    return () => mediaQuery.removeEventListener("change", handleResize); // Limpia el evento
+    mediaQuery.addEventListener("change", handleResize);
+    return () => mediaQuery.removeEventListener("change", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const mediaQueryWide = window.matchMedia("(min-width: 1280px)");
+
+    const handleResize = (e: {
+      matches: boolean | ((prevState: boolean) => boolean);
+    }) => {
+      setIsWide(e.matches);
+    };
+    mediaQueryWide.addEventListener("change", handleResize);
+
+    return () => mediaQueryWide.removeEventListener("change", handleResize);
   }, []);
 
   return (
@@ -40,7 +56,9 @@ function App() {
         <aside
           className={`${
             contactPanel ? "block" : "hidden"
-          } xl:inline-block lg:min-w-[240px] lg:w-[300px] w-screen sm:w-[300px] min-h-full bg-black xl:bg-dark-transparent lg:mr-1 absolute left-0 xl:static border border-b-0 border-purple-500 border-x-purple-300 border-l-0 xl:border-x border-r-0 sm:border-r sm:rounded-tr-xl xl:rounded-t-xl aside-shadow xl:shadow-none`}
+          } xl:inline-block lg:min-w-[240px] lg:w-[300px] w-screen sm:w-[300px] min-h-full bg-black xl:bg-dark-transparent lg:mr-1 absolute left-0 xl:static border border-b-0 border-purple-500 border-x-purple-300 border-l-0 xl:border-x border-r-0 sm:border-r sm:rounded-tr-xl xl:rounded-t-xl ${
+            isWide ? "aside-shadow-none" : "aside-shadow"
+          }`}
         >
           <div className="flex items-center sm:justify-center px-1 w-full">
             <h2 className="font-black text-xl text-white text-center my-5 ml-auto xl:mx-auto">

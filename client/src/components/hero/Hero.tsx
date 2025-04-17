@@ -8,7 +8,7 @@ function Hero() {
         <div className="bg-white w-32 h-32 lg:w-40 lg:h-40 rounded-full flex items-center justify-center">
           <img src="#" alt="profile-picture" />
         </div>
-        <h2 className="text-white font-black text-nowrap lg:text-2xl">
+        <h2 className="text-white font-black text-nowrap lg:text-2xl pt-2 pb-5 md:pt-5 md:pb-0">
           GEVER RODRIGUEZ
         </h2>
       </div>
