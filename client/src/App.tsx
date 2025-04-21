@@ -66,7 +66,7 @@ function App() {
             </h2>
             <button
               onClick={() => setContactPanel(false)}
-              className="border-2 border-white rounded-full w-6 h-6 ml-auto xl:hidden"
+              className="border-2 border-white rounded-full w-6 h-6 ml-auto xl:hidden cursor-pointer"
             >
               <i className="fa-solid fa-xmark lg:text-xl text-white"></i>
             </button>
@@ -114,7 +114,7 @@ function App() {
           lg:max-w-[900px] 
           lg:mx-0
           px-1 
-          md:p-3 
+          md:px-3 
           text-justify 
         "
         >

@@ -35,3 +35,11 @@ main::-webkit-scrollbar {
 .nav-shadow {
   box-shadow: -10px 10px 10px 0px rgba(66, 0, 128, 0.582);
 }
+
+#home div::-webkit-scrollbar {
+  display: none;
+}
+
+#personal-experience div::-webkit-scrollbar {
+  display: none;
+}
