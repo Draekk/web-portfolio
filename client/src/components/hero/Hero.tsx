@@ -17,7 +17,7 @@ function Hero() {
       <div className="overflow-scroll scroll-smooth">
         <p className="text-white text-sm md:text-lg lg:text-xl">
           Hola, soy <b>Gever Rodríguez</b>, aunque en el mundo del desarrollo me
-          conocen como <b>draekkdev</b>. Desde muy joven he sentido una gran
+          conocen como <b>Draekkdev</b>. Desde muy joven he sentido una gran
           curiosidad por la tecnología y especialmente por entender qué ocurre
           detrás de una pantalla o una interfaz.
           <br />

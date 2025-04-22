@@ -9,34 +9,21 @@ function PExperience() {
       <h2 className="font-black text-2xl lg:text-4xl">PERSONAL EXPERIENCE</h2>
       <div className="overflow-scroll scroll-smooth">
         <p className="text-sm md:text-lg lg:text-xl">
-          A lo largo de mi formación y práctica como desarrollador, he trabajado
-          principalmente en el desarrollo de aplicaciones web, con un enfoque en
-          el backend. Me especializo en Java y utilizo Spring Boot como
-          framework principal. También tengo experiencia con Hibernate y JPA
-          para la gestión de datos, lo que me ha permitido desarrollar APIs REST
-          eficientes y estructuradas.
+          Cuento con experiencia en el desarrollo de aplicaciones web,
+          principalmente en el área de backend, utilizando <b>Java</b> junto con{" "}
+          <b>Spring Boot</b>, <b>Hibernate</b> y <b>JPA</b>. También he
+          trabajado con tecnologías frontend como <b>React.js</b>, <b>HTML</b>,{" "}
+          <b>CSS</b> y <b>Node.js</b>, lo que me permite desenvolverme en
+          proyectos de tipo <b>fullstack</b>.
           <br />
           <br />
-          En el frontend, he trabajado con React.js, junto con tecnologías como
-          HTML, CSS y Node.js, lo que me ha permitido construir interfaces
-          funcionales y conectadas a servicios backend de manera efectiva. Si
-          bien mi interés principal está en la lógica del lado del servidor,
-          también me desenvuelvo con soltura en el desarrollo del lado del
-          cliente.
+          He desarrollado APIs REST, sistemas de inventario, plataformas de
+          gestión de usuarios y este mismo portafolio. Mi enfoque está en
+          construir soluciones sólidas, funcionales y bien estructuradas.
           <br />
           <br />
-          He participado en proyectos como sistemas de inventario, plataformas
-          de ventas, gestión de usuarios y este mismo portafolio, el cual cuenta
-          con una API REST desarrollada por mí. Disfruto especialmente diseñar
-          estructuras sólidas y escalables que simplifiquen procesos y mejoren
-          el rendimiento general de las aplicaciones.
-          <br />
-          <br />
-          Si bien mi experiencia se ha centrado principalmente en el backend,
-          tengo como propósito desarrollar un perfil fullstack, fortaleciendo
-          mis competencias tanto en el desarrollo del lado del servidor como en
-          el frontend, con el fin de entregar soluciones integrales, eficientes
-          y bien estructuradas.
+          En la siguiente sección se presentan los proyectos desarrollados,
+          organizados según las tecnologías utilizadas en cada uno de ellos.
         </p>
       </div>
     </section>
