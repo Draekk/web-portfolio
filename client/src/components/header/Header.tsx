@@ -1,4 +1,5 @@
 import "../../App.css";
+import { tHeader } from "../../types/tTextLang";
 
 type THeaderProps = {
   isMobile: boolean;
@@ -6,6 +7,8 @@ type THeaderProps = {
   contactPanel: boolean;
   setNavPopUp: React.Dispatch<React.SetStateAction<boolean>>;
   setContactPanel: React.Dispatch<React.SetStateAction<boolean>>;
+  header: tHeader;
+  toggleLang: () => void;
 };
 
 function Header({
@@ -14,6 +17,8 @@ function Header({
   contactPanel,
   setNavPopUp,
   setContactPanel,
+  header: headerText,
+  toggleLang,
 }: THeaderProps) {
   return (
     <header
@@ -22,7 +27,7 @@ function Header({
       }`}
     >
       <h1 className="text-nowrap font-bold text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white">
-        WEB PORTFOLIO
+        {headerText.title}
       </h1>
       <nav className="flex justify-end items-center h-full w-full">
         {isMobile ? (
@@ -42,7 +47,7 @@ function Header({
                 >
                   <li className="h-full w-full border-b border-b-purple-300 flex justify-end pr-2 pb-1">
                     <a className="text-white font-semibold h-full" href="#home">
-                      Home
+                      {headerText.navHome}
                     </a>
                   </li>
                   <li className="h-full w-full border-b border-b-purple-300 flex justify-end pr-2 py-1">
@@ -50,7 +55,7 @@ function Header({
                       className="text-white font-semibold h-full"
                       href="#personal-experience"
                     >
-                      Experience
+                      {headerText.navExperience}
                     </a>
                   </li>
                   <li className="h-full w-full border-b border-b-purple-300 flex justify-end pr-2 py-1">
@@ -58,17 +63,25 @@ function Header({
                       className="text-white font-semibold h-full"
                       href="#technologies"
                     >
-                      Technologies
+                      {headerText.navTechnologies}
                     </a>
                   </li>
-                  <li className="h-full w-full flex justify-end pr-2 pt-1">
+                  <li className="h-full w-full border-b border-b-purple-300 flex justify-end pr-2 py-1">
                     <a
                       className="text-white font-semibold h-full"
                       href="#"
                       onClick={() => setContactPanel(true)}
                     >
-                      Contact me
+                      {headerText.navContact}
                     </a>
+                  </li>
+                  <li className="h-full w-full flex justify-end pr-2 pt-1">
+                    <button
+                      onClick={toggleLang}
+                      className="text-white font-bold"
+                    >
+                      en/es
+                    </button>
                   </li>
                 </ul>
               </>
@@ -76,13 +89,13 @@ function Header({
           </>
         ) : (
           <>
-            <ul className="flex justify-end gap-10 items-center h-full">
+            <ul className="flex justify-end gap-5 lg:gap-10 items-center h-full">
               <li className="h-full">
                 <a
                   className="text-white font-semibold h-full flex items-center lg:text-lg xl:text-xl"
                   href="#home"
                 >
-                  Home
+                  {headerText.navHome}
                 </a>
               </li>
               <li className="h-full">
@@ -90,7 +103,7 @@ function Header({
                   className="text-white font-semibold h-full flex items-center lg:text-lg xl:text-xl"
                   href="#personal-experience"
                 >
-                  Experience
+                  {headerText.navExperience}
                 </a>
               </li>
               <li className="h-full">
@@ -98,7 +111,7 @@ function Header({
                   className="text-white font-semibold h-full flex items-center lg:text-lg xl:text-xl"
                   href="#technologies"
                 >
-                  Technologies
+                  {headerText.navTechnologies}
                 </a>
               </li>
               <li className="h-full xl:hidden">
@@ -107,8 +120,16 @@ function Header({
                   href="#"
                   onClick={() => setContactPanel(true)}
                 >
-                  Contact me
+                  {headerText.navContact}
                 </a>
+              </li>
+              <li className="h-full flex items-center">
+                <button
+                  onClick={toggleLang}
+                  className="text-white font-semibold flex items-center lg:text-lg xl:text-xl border-2 border-purple-600 hover:bg-purple-950 border-dashed p-3 rounded-full cursor-pointer"
+                >
+                  es/en
+                </button>
               </li>
             </ul>
           </>

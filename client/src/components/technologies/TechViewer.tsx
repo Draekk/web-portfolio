@@ -2,12 +2,13 @@ import "./techViewer.css";
 import { tDetailedTechnology } from "../../types/tTechnology";
 import ProjectSummary from "./projects/ProjectSummary";
 import { useState } from "react";
+import { tBtnScreenshot } from "../../types/tTextLang";
 
-type TTechViewerProps = {
+type TTechViewerProps = tBtnScreenshot & {
   tech: tDetailedTechnology;
 };
 
-function TechViewer({ tech }: TTechViewerProps) {
+function TechViewer({ tech, text, closeText }: TTechViewerProps) {
   const [picUrl, setPicUrl] = useState("");
 
   return (
@@ -21,6 +22,8 @@ function TechViewer({ tech }: TTechViewerProps) {
               picUrl={picUrl}
               setPicUrl={setPicUrl}
               project={p}
+              text={text}
+              closeText={closeText}
             ></ProjectSummary>
           ))
         ) : (
