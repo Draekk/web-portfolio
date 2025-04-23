@@ -5,6 +5,7 @@ import PExperience from "./components/personal_experience/PExperience";
 import Technologies from "./components/technologies/Technologies";
 import ContactCard from "./components/contact/ContactCard";
 import "./App.css";
+import { textAll } from "./types/tTextLang";
 
 function App() {
   const [navPopUp, setNavPopUp] = useState(false);
@@ -15,6 +16,11 @@ function App() {
   const [isWide, setIsWide] = useState(
     window.matchMedia("(min-width: 1280px)").matches
   );
+  const [lang, setLang] = useState(textAll.es);
+
+  const toggleLang: () => void = () => {
+    setLang((prevLang) => (prevLang === textAll.es ? textAll.en : textAll.es));
+  };
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 760px)");
@@ -51,6 +57,8 @@ function App() {
         contactPanel={contactPanel}
         setNavPopUp={setNavPopUp}
         setContactPanel={setContactPanel}
+        header={lang.header}
+        toggleLang={toggleLang}
       ></Header>
       <div className="flex m-auto">
         <aside
@@ -62,7 +70,7 @@ function App() {
         >
           <div className="flex items-center sm:justify-center px-1 w-full">
             <h2 className="font-black text-xl text-white text-center my-5 ml-auto xl:mx-auto">
-              Let's Build Something
+              {lang.contact.title}
             </h2>
             <button
               onClick={() => setContactPanel(false)}
@@ -119,13 +127,19 @@ function App() {
         "
         >
           <div className="scroll-section">
-            <Hero></Hero>
+            <Hero paragraph={lang.hero.paragraph}></Hero>
           </div>
           <div className="scroll-section">
-            <PExperience></PExperience>
+            <PExperience
+              title={lang.experience.title}
+              paragraph={lang.experience.paragraph}
+            ></PExperience>
           </div>
           <div className="scroll-section w-full">
-            <Technologies></Technologies>
+            <Technologies
+              title={lang.technologies.title}
+              btnScreenshot={lang.btnScreenshot}
+            ></Technologies>
           </div>
         </main>
       </div>

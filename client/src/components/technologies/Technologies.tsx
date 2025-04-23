@@ -2,8 +2,13 @@ import "./technologies.css";
 import Technology from "./Technology";
 import { useTechnology } from "../../hooks/useTechnology";
 import TechViewer from "./TechViewer";
+import { tBtnScreenshot, tTechnologies } from "../../types/tTextLang";
 
-function Technologies() {
+type tTechnologiesProps = tTechnologies & {
+  btnScreenshot: tBtnScreenshot;
+};
+
+function Technologies({ title, btnScreenshot }: tTechnologiesProps) {
   const { techList, tech, selectTech, toggleTech } = useTechnology();
 
   return (
@@ -12,7 +17,7 @@ function Technologies() {
       className="flex flex-col gap-y-3 text-white w-full transition-1s h-[80vh]"
     >
       <h2 className="font-black text-2xl lg:text-4xl justify-content-start">
-        TECHNOLOGIES
+        {title}
       </h2>
       <div className="flex flex-col justify-start items-center w-full h-full">
         <div
@@ -35,7 +40,15 @@ function Technologies() {
             <></>
           )}
         </div>
-        {selectTech.enabled ? <TechViewer tech={tech}></TechViewer> : <></>}
+        {selectTech.enabled ? (
+          <TechViewer
+            tech={tech}
+            text={btnScreenshot.text}
+            closeText={btnScreenshot.closeText}
+          ></TechViewer>
+        ) : (
+          <></>
+        )}
       </div>
     </section>
   );

@@ -2,14 +2,21 @@ import "./projectSummary.css";
 import { useState } from "react";
 import { tDetailedProject } from "../../../types/tProject";
 import ScreenshotViewer from "./ScreenshotViewer";
+import { tBtnScreenshot } from "../../../types/tTextLang";
 
-type tProjectSummaryProps = {
+type tProjectSummaryProps = tBtnScreenshot & {
   project: tDetailedProject;
   picUrl: string;
   setPicUrl: (value: React.SetStateAction<string>) => void;
 };
 
-function ProjectSummary({ project, picUrl, setPicUrl }: tProjectSummaryProps) {
+function ProjectSummary({
+  project,
+  picUrl,
+  setPicUrl,
+  text,
+  closeText,
+}: tProjectSummaryProps) {
   const [screenshotPanel, setScreenshotPanel] = useState(false);
   const [screenshotViewer, setScreenshotViewer] = useState(false);
 
@@ -49,7 +56,7 @@ function ProjectSummary({ project, picUrl, setPicUrl }: tProjectSummaryProps) {
                   : "bg-purple-700 hover:shadow-purple-600"
               } cursor-pointer font-black hover:shadow-sm  rounded-full p-2 md:px-6 md:py-0 my-3 `}
             >
-              {screenshotPanel ? "Close" : "Screenshots"}
+              {screenshotPanel ? closeText : text}
             </button>
             <ul className="flex flex-wrap justify-center md:justify-end gap-x-5 justify-self-end w-full md:w-[70%]">
               {project.technologies.length > 0 ? (
