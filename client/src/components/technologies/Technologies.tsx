@@ -16,7 +16,7 @@ function Technologies({ title, btnScreenshot }: tTechnologiesProps) {
       id="technologies"
       className="flex flex-col gap-y-3 text-white w-full transition-1s h-[80vh]"
     >
-      <h2 className="font-black text-2xl lg:text-4xl justify-content-start">
+      <h2 className="font-black text-2xl lg:text-4xl justify-content-start sticky top-0 bg-black">
         {title}
       </h2>
       <div className="flex flex-col justify-start items-center w-full h-full">

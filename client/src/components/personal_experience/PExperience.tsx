@@ -7,7 +7,9 @@ function PExperience({ title, paragraph }: tExperience) {
       id="personal-experience"
       className="flex flex-col gap-y-3 text-white h-[80vh]"
     >
-      <h2 className="font-black text-2xl lg:text-4xl">{title}</h2>
+      <h2 className="font-black text-2xl lg:text-4xl sticky top-0 bg-black">
+        {title}
+      </h2>
       <div className="overflow-scroll scroll-smooth">
         <p
           className="md:text-lg lg:text-xl"
