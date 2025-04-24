@@ -2,7 +2,7 @@ import { tResponse } from "../types/tResponse";
 import { tDetailedTechnology } from "../types/tTechnology";
 
 function useFetchData() {
-  const SERVER_URL: string = "http://localhost:8080/api";
+  const SERVER_URL: string = import.meta.env.VITE_API_URL;
   const TECHNOLOGY: string = "/technology";
 
   const findAllTechnologies: () => Promise<
