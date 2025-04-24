@@ -18,7 +18,7 @@ function Hero({ paragraph }: tHero) {
       <div className="overflow-scroll scroll-smooth">
         <p
           dangerouslySetInnerHTML={{ __html: paragraph }}
-          className="text-white text-sm md:text-lg lg:text-xl"
+          className="text-white md:text-lg lg:text-xl"
         ></p>
       </div>
     </div>

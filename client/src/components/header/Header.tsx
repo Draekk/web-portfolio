@@ -78,7 +78,7 @@ function Header({
                   <li className="h-full w-full flex justify-end pr-2 pt-1">
                     <button
                       onClick={toggleLang}
-                      className="text-white font-bold"
+                      className="text-white font-bold w-full text-right"
                     >
                       en/es
                     </button>

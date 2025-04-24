@@ -10,7 +10,7 @@ function PExperience({ title, paragraph }: tExperience) {
       <h2 className="font-black text-2xl lg:text-4xl">{title}</h2>
       <div className="overflow-scroll scroll-smooth">
         <p
-          className="text-sm md:text-lg lg:text-xl"
+          className="md:text-lg lg:text-xl"
           dangerouslySetInnerHTML={{ __html: paragraph }}
         ></p>
       </div>
