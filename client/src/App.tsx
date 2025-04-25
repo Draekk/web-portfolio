@@ -60,7 +60,7 @@ function App() {
         header={lang.header}
         toggleLang={toggleLang}
       ></Header>
-      <div className="flex m-auto">
+      <div className="flex h-[85vh]">
         <aside
           className={`${
             contactPanel ? "block" : "hidden"
@@ -126,7 +126,7 @@ function App() {
           text-justify 
         "
         >
-          <div className="scroll-section scroll-mt-20">
+          <div id="home" className="scroll-section">
             <Hero paragraph={lang.hero.paragraph}></Hero>
           </div>
           <div className="scroll-section scroll-mt-20">

@@ -12,15 +12,8 @@
   scroll-snap-type: y mandatory;
 } */
 
-header {
-  position: sticky;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.9);
-  width: 100%;
-}
-
 main {
-  height: 85vh;
+  /* height: 85vh; */
   overflow-y: auto;
   scroll-behavior: smooth;
 }

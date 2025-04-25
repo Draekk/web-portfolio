@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
-html,
+/* html,
 body {
-  height: 100%;
-}
+  height: 100vh;
+} */
 
-body {
+body > div {
   background-image: url("https://res.cloudinary.com/dhaha1ozm/image/upload/v1741723108/purple-bg_opquvw.webp");
   background-position: center;
   background-size: cover;
@@ -14,8 +14,10 @@ body {
   /* overflow: hidden; */
 }
 
-.vertical-container {
+/* .vertical-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
+  justify-items: space-between;
+  align-items: center;
+  height: 100vh;
+} */

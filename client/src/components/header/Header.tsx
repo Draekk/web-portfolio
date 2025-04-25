@@ -22,7 +22,7 @@ function Header({
 }: THeaderProps) {
   return (
     <header
-      className={`py-0 my-0 h-20 bg-none flex justify-between items-center px-2.5 ${
+      className={`py-0 my-0 h-28 bg-none flex justify-between items-center px-2.5 w-full ${
         contactPanel ? "pointer-events-none" : ""
       }`}
     >
