@@ -2,7 +2,6 @@
 
 html,
 body {
-  scroll-behavior: smooth;
   height: 100%;
 }
 
@@ -11,6 +10,7 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   overflow: hidden;
 }
 
