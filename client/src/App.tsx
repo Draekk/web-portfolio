@@ -126,16 +126,16 @@ function App() {
           text-justify 
         "
         >
-          <div className="scroll-section">
+          <div className="scroll-section scroll-mt-[15vh]">
             <Hero paragraph={lang.hero.paragraph}></Hero>
           </div>
-          <div className="scroll-section">
+          <div className="scroll-section scroll-mt-[15vh]">
             <PExperience
               title={lang.experience.title}
               paragraph={lang.experience.paragraph}
             ></PExperience>
           </div>
-          <div className="scroll-section w-full">
+          <div className="scroll-section scroll-mt-[15vh] w-full">
             <Technologies
               title={lang.technologies.title}
               btnScreenshot={lang.btnScreenshot}
