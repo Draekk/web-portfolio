@@ -12,10 +12,7 @@ function Technologies({ title, btnScreenshot }: tTechnologiesProps) {
   const { techList, tech, selectTech, toggleTech } = useTechnology();
 
   return (
-    <section
-      id="technologies"
-      className="flex flex-col gap-y-3 text-white w-full transition-1s h-[85vh]"
-    >
+    <section className="flex flex-col gap-y-3 text-white w-full transition-1s h-[85vh]">
       <h2 className="font-black text-2xl lg:text-4xl justify-content-start">
         {title}
       </h2>

@@ -1,23 +1,9 @@
 @import "tailwindcss";
 
-/* html,
-body {
-  height: 100vh;
-} */
-
 body > div {
   background-image: url("https://res.cloudinary.com/dhaha1ozm/image/upload/v1741723108/purple-bg_opquvw.webp");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  /* overflow: hidden; */
 }
-
-/* .vertical-container {
-  display: flex;
-  flex-direction: column;
-  justify-items: space-between;
-  align-items: center;
-  height: 100vh;
-} */
