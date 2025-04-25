@@ -22,9 +22,8 @@ function Header({
 }: THeaderProps) {
   return (
     <header
-      className={`py-0 my-0 h-20 md:h-28 bg-none flex justify-between items-center px-2.5 w-full ${
-        contactPanel ? "pointer-events-none" : ""
-      }`}
+      id="header"
+      className={`py-0 my-0 h-20 md:h-28 bg-none flex justify-between items-center px-2.5 w-full`}
     >
       <h1 className="text-nowrap font-bold text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white">
         {headerText.title}

@@ -61,7 +61,8 @@ function App() {
         toggleLang={toggleLang}
       ></Header>
       <div className="flex h-[85vh]">
-        <div
+        <aside
+          id="aside"
           className={`${
             contactPanel ? "block" : "hidden"
           } xl:inline-block lg:min-w-[240px] lg:w-[300px] w-screen sm:h-fit sm:pb-5 h-full xl:h-full sm:w-[300px] bg-black xl:bg-dark-transparent lg:mr-1 absolute left-0 xl:static border xl:border-b-0 border-purple-500 border-x-purple-300 border-l-0 xl:border-x border-r-0 sm:border-r sm:rounded-tr-xl sm:rounded-br-xl xl:rounded-t-xl ${
@@ -79,7 +80,7 @@ function App() {
               <i className="fa-solid fa-xmark lg:text-xl text-white"></i>
             </button>
           </div>
-          <section className="grid grid-cols-1 gap-y-5 max-w-full justify-items-center px-4">
+          <section className="grid grid-cols-1 gap-y-3 xl:gap-y-6 max-w-full justify-items-center px-4">
             <ContactCard
               imgUrl={
                 "https://res.cloudinary.com/dhaha1ozm/image/upload/v1744664244/linkedin_ico_color_lyeulq.png"
@@ -105,7 +106,7 @@ function App() {
               text="WhatsApp"
             ></ContactCard>
           </section>
-        </div>
+        </aside>
         <main
           onClick={() => {
             setNavPopUp(false);

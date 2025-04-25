@@ -41,3 +41,12 @@ main::-webkit-scrollbar {
 #personal-experience div::-webkit-scrollbar {
   display: none;
 }
+
+@media (max-height: 425px) {
+  #header {
+    max-height: 5.5rem;
+  }
+  #aside {
+    top: 0;
+  }
+}
