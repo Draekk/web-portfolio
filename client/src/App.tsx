@@ -65,7 +65,7 @@ function App() {
           id="aside"
           className={`${
             contactPanel ? "block" : "hidden"
-          } xl:inline-block lg:min-w-[240px] lg:w-[300px] w-screen sm:h-fit sm:pb-5 h-full xl:h-full sm:w-[300px] bg-black xl:bg-dark-transparent lg:mr-1 absolute left-0 xl:static border xl:border-b-0 border-purple-500 border-x-purple-300 border-l-0 xl:border-x border-r-0 sm:border-r sm:rounded-tr-xl sm:rounded-br-xl xl:rounded-t-xl ${
+          } xl:inline-block lg:min-w-[240px] lg:w-[300px] w-screen sm:h-fit sm:pb-5 h-full xl:h-full sm:w-[300px] bg-black xl:bg-dark-transparent lg:mr-1 absolute left-0 xl:static border xl:border-b-0 border-purple-500 border-x-purple-300 border-l-0 xl:border-x border-r-0 sm:border-r sm:rounded-tr-xl sm:rounded-br-xl xl:rounded-t-xl xl:rounded-br-none ${
             isWide ? "aside-shadow-none" : "aside-shadow"
           }`}
         >
@@ -127,21 +127,15 @@ function App() {
           text-justify 
         "
         >
-          <div id="home" className="scroll-section">
-            <Hero paragraph={lang.hero.paragraph}></Hero>
-          </div>
-          <div id="personal-experience" className="scroll-section">
-            <PExperience
-              title={lang.experience.title}
-              paragraph={lang.experience.paragraph}
-            ></PExperience>
-          </div>
-          <div id="technologies" className="scroll-section w-full">
-            <Technologies
-              title={lang.technologies.title}
-              btnScreenshot={lang.btnScreenshot}
-            ></Technologies>
-          </div>
+          <Hero paragraph={lang.hero.paragraph}></Hero>
+          <PExperience
+            title={lang.experience.title}
+            paragraph={lang.experience.paragraph}
+          ></PExperience>
+          <Technologies
+            title={lang.technologies.title}
+            btnScreenshot={lang.btnScreenshot}
+          ></Technologies>
         </main>
       </div>
     </>
