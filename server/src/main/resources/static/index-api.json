@@ -1,0 +1,106 @@
+{
+    "apiName": "Draekkdev's backend Portfolio",
+    "description": "REST API to manage projects, technologies, and screenshots for my web portfolio.",
+    "endpoints": {
+      "/projects": {
+        "GET": {
+          "description": "Retrieve all projects",
+          "authorization": false
+        },
+        "GET /{id}": {
+          "description": "Retrieve a project by its ID",
+          "authorization": false
+        },
+        "GET /search?name={query}": {
+          "description": "Search projects by name",
+          "authorization": false
+        },
+        "POST": {
+          "description": "Create a new project",
+          "authorization": true,
+          "bodyExample": {
+            "name" : "Project name",
+            "description": "Project description.",
+            "creationDate": "yyyy-MM-dd",
+            "url": "https://anyurl.example",
+            "screenshotUrls": [
+                "https://anyscreenshoturl1.example",
+                "https://anyscreenshoturl2.example",
+                "https://anyscreenshoturl3.example"
+            ],
+            "technologyIdList": [
+                1, 2, 3, 4
+            ]
+        }
+        },
+        "PUT /{id}": {
+          "description": "Update an existing project",
+          "authorization": true,
+          "bodyExample": {
+            "name" : "Project name",
+            "description": "Project description.",
+            "creationDate": "yyyy-MM-dd",
+            "url": "https://anyurl.example",
+            "screenshotUrls": [
+                "https://anyscreenshoturl1.example",
+                "https://anyscreenshoturl2.example",
+                "https://anyscreenshoturl3.example"
+            ],
+            "technologyIdList": [
+                1, 2, 3, 4
+            ]
+        }
+        },
+        "DELETE /{id}": {
+          "description": "Delete a project",
+          "authorization": true
+        }
+      },
+      "/screenshots": {
+        "GET": {
+          "description": "Retrieve all screenshots",
+          "authorization": false
+          
+        },
+        "DELETE /{id}": {
+          "description": "Delete a screenshot",
+          "authorization": true
+        }
+      },
+      "/technologies": {
+        "GET": {
+          "description": "Retrieve all technologies",
+          "authorization": false
+        },
+        "GET /{id}": {
+          "description": "Retrieve a technology by its ID",
+          "authorization": false
+        },
+        "GET /search?name={query}": {
+          "description": "Search technologies by name",
+          "authorization": false
+        },
+        "POST": {
+          "description": "Create a new technology",
+          "authorization": true,
+          "bodyExample": {
+            "name": "Tech name",
+            "logoUrl": "https://anylogourl.example"
+          }
+        },
+        "PUT /{id}": {
+          "description": "Update a technology",
+          "authorization": true,
+          "bodyExample": {
+            "name": "Tech name",
+            "logoUrl": "https://anylogourl.example"
+          }
+        },
+        "DELETE /{id}": {
+          "description": "Delete a technology",
+          "authorization": true
+        }
+      }
+    }
+  }
+  
