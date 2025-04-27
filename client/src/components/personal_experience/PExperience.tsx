@@ -1,16 +1,15 @@
 import "../../App.css";
+import "../../title-anim.css";
 import { tExperience } from "../../types/tTextLang";
 
 function PExperience({ title, paragraph }: tExperience) {
   return (
-    <section className="flex flex-col gap-y-3 text-white h-[85vh]">
-      <h2 className="font-black text-2xl lg:text-4xl">{title}</h2>
-      <div className="overflow-scroll scroll-smooth">
+    <section id="personal-experience" className="flex flex-col gap-y-3 text-white min-h-[85vh]">
+      <h2 className="font-black text-2xl lg:text-4xl mb-5">{title}</h2>
         <p
           className="md:text-lg lg:text-xl"
           dangerouslySetInnerHTML={{ __html: paragraph }}
         ></p>
-      </div>
     </section>
   );
 }

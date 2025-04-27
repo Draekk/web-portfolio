@@ -1,0 +1,17 @@
+#personal-experience h2, #technologies h2 {
+    position: relative;
+    animation: animate1 5s linear infinite;
+    background: linear-gradient(270deg, transparent, transparent, rgb(66, 0, 128), transparent, transparent);
+    text-align: center;
+}
+
+@keyframes animate1 {
+    0% {
+        right: -100%;
+    }
+
+    50%,
+    100% {
+        right: 0%;
+    }
+}
