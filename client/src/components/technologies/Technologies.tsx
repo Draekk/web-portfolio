@@ -18,7 +18,7 @@ function Technologies({ title, btnScreenshot }: tTechnologiesProps) {
       </h2>
       <div className="flex flex-col justify-start items-center w-full h-full">
         <div
-          className={`flex justify-center items-center overflow-y-scroll scroll-smooth ${
+          className={`flex justify-center items-center ${
             selectTech.enabled ? "tech-selected" : "tech-unselected"
           }`}
         >

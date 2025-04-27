@@ -52,7 +52,7 @@ function Technology({
       <figure className="w-14 h-14 lg:w-28 lg:h-28 rounded-full p-1 flex items-center justify-center">
         <img src={logoUrl} alt={name} className="w-[75%]" />
       </figure>
-      <span className="text-white text-sm md:text-lg lg:text-xl capitalize">
+      <span className="text-white text-sm md:text-lg font-black uppercase">
         {name}
       </span>
     </div>
