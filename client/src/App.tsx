@@ -60,7 +60,7 @@ function App() {
         header={lang.header}
         toggleLang={toggleLang}
       ></Header>
-      <div className="flex h-[85vh]">
+      <div className="flex h-[85vh] md:h-[80vh]">
         <aside
           id="aside"
           className={`${
@@ -113,10 +113,7 @@ function App() {
             setContactPanel(false);
           }}
           className="
-          flex
-          flex-col
-          items-center
-          gap-y-20
+          
           bg-dark-transparent 
           w-full 
           md:max-w-[780px] 

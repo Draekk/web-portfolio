@@ -12,13 +12,13 @@ function Technologies({ title, btnScreenshot }: tTechnologiesProps) {
   const { techList, tech, selectTech, toggleTech } = useTechnology();
 
   return (
-    <section id="technologies" className="flex flex-col gap-y-3 text-white w-full transition-1s min-h-[85vh]">
+    <section id="technologies" className="flex flex-col gap-y-3 text-white w-full mt-10 transition-1s min-h-[85vh]">
       <h2 className="font-black text-2xl lg:text-4xl justify-content-start">
         {title}
       </h2>
       <div className="flex flex-col justify-start items-center w-full h-full">
         <div
-          className={`flex justify-center items-center ${
+          className={`flex justify-center items-center w-full ${
             selectTech.enabled ? "tech-selected" : "tech-unselected"
           }`}
         >
