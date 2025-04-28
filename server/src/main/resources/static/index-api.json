@@ -1,106 +1,125 @@
 {
-    "apiName": "Draekkdev's backend Portfolio",
-    "description": "REST API to manage projects, technologies, and screenshots for my web portfolio.",
-    "endpoints": {
-      "/projects": {
-        "GET": {
+  "apiName": "Draekkdev's backend Portfolio",
+  "description": "REST API to manage projects, technologies, and screenshots for my web portfolio.",
+  "endpoints": {
+    "/project": {
+      "GET": {
+        "/find/all": {
           "description": "Retrieve all projects",
           "authorization": false
         },
-        "GET /{id}": {
+        "/find/id/{id}": {
           "description": "Retrieve a project by its ID",
           "authorization": false
         },
-        "GET /search?name={query}": {
+        "/find/name/{query}": {
           "description": "Search projects by name",
           "authorization": false
-        },
-        "POST": {
+        }
+      },
+      "POST": {
+        "/create": {
           "description": "Create a new project",
           "authorization": true,
           "bodyExample": {
-            "name" : "Project name",
+            "name": "Project name",
             "description": "Project description.",
             "creationDate": "yyyy-MM-dd",
             "url": "https://anyurl.example",
             "screenshotUrls": [
-                "https://anyscreenshoturl1.example",
-                "https://anyscreenshoturl2.example",
-                "https://anyscreenshoturl3.example"
+              "https://anyscreenshoturl1.example",
+              "https://anyscreenshoturl2.example",
+              "https://anyscreenshoturl3.example"
             ],
-            "technologyIdList": [
-                1, 2, 3, 4
-            ]
+            "technologyIdList": [1, 2, 3, 4]
+          }
         }
-        },
-        "PUT /{id}": {
+      },
+      "PUT": {
+        "/update": {
           "description": "Update an existing project",
           "authorization": true,
           "bodyExample": {
-            "name" : "Project name",
+            "name": "Project name",
             "description": "Project description.",
             "creationDate": "yyyy-MM-dd",
             "url": "https://anyurl.example",
             "screenshotUrls": [
-                "https://anyscreenshoturl1.example",
-                "https://anyscreenshoturl2.example",
-                "https://anyscreenshoturl3.example"
+              "https://anyscreenshoturl1.example",
+              "https://anyscreenshoturl2.example",
+              "https://anyscreenshoturl3.example"
             ],
-            "technologyIdList": [
-                1, 2, 3, 4
-            ]
+            "technologyIdList": [1, 2, 3, 4]
+          }
         }
-        },
-        "DELETE /{id}": {
+      },
+      "DELETE": {
+        "/delete/id/{id}": {
           "description": "Delete a project",
           "authorization": true
         }
-      },
-      "/screenshots": {
-        "GET": {
+      }
+    },
+    "/screenshot": {
+      "GET": {
+        "/find/all": {
           "description": "Retrieve all screenshots",
           "authorization": false
-          
         },
-        "DELETE /{id}": {
+        "/find/id/{id}": {
+          "description": "Retrieve a screenshot by its ID",
+          "authorization": false
+        }
+      },
+      "DELETE": {
+        "/delete/id/{id}": {
           "description": "Delete a screenshot",
           "authorization": true
         }
-      },
-      "/technologies": {
-        "GET": {
+      }
+    },
+    "/technologies": {
+      "GET": {
+        "/find/all": {
           "description": "Retrieve all technologies",
           "authorization": false
         },
-        "GET /{id}": {
+        "/find/id/{id}": {
           "description": "Retrieve a technology by its ID",
           "authorization": false
         },
-        "GET /search?name={query}": {
+        "/find/name/{query}": {
           "description": "Search technologies by name",
           "authorization": false
-        },
-        "POST": {
+        }
+      },
+      "POST": {
+        "/create": {
           "description": "Create a new technology",
           "authorization": true,
           "bodyExample": {
             "name": "Tech name",
             "logoUrl": "https://anylogourl.example"
           }
-        },
-        "PUT /{id}": {
+        }
+      },
+      "PUT": {
+        "/update": {
           "description": "Update a technology",
           "authorization": true,
           "bodyExample": {
+            "id": 0,
             "name": "Tech name",
             "logoUrl": "https://anylogourl.example"
           }
-        },
-        "DELETE /{id}": {
+        }
+      },
+      "DELETE": {
+        "/delete/id/{id}": {
           "description": "Delete a technology",
           "authorization": true
         }
       }
     }
   }
-  
+}
