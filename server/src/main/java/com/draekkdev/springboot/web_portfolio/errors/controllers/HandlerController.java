@@ -54,7 +54,8 @@ public class HandlerController {
         DataIntegrityViolationException.class,
         HttpMessageNotReadableException.class,
         MissingPathVariableException.class,
-        NoResourceFoundException.class
+        NoResourceFoundException.class,
+        RuntimeException.class
     })
     public ResponseEntity<ResponseDto<?>> globalErrorHandler(Exception ex, HttpServletRequest request) {
         ResponseDto<?> response = new ResponseDto<>();
