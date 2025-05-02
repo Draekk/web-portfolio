@@ -29,7 +29,7 @@ function ProjectSummary({
         <figure className="hidden overflow-hidden  md:flex items-center justify-center w-32 h-32 rounded-lg">
           <img
             className="h-full w-full object-cover"
-            src={project.screenshots[0].url}
+            src={project.screenshots ? project.screenshots[0].url : "#"}
             alt="project-picture"
           />
         </figure>
