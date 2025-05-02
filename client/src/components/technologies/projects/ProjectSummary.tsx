@@ -26,7 +26,7 @@ function ProjectSummary({
       className="flex flex-col h-fit py-4 rounded-xl w-[95%] mx-auto"
     >
       <div className="flex md:justify-center">
-        <figure className="hidden overflow-hidden  md:flex items-center justify-center w-32 h-32 bg-red-400 rounded-lg">
+        <figure className="hidden overflow-hidden  md:flex items-center justify-center w-32 h-32 rounded-lg">
           <img src={project.screenshots[0].url} alt="project-picture" />
         </figure>
         <div className="w-full md:w-[80%] px-4 flex flex-col justify-between">
