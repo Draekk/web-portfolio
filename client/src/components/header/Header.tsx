@@ -42,7 +42,7 @@ function Header({
               <>
                 <ul
                   onClick={() => setNavPopUp(false)}
-                  className="absolute top-16 right-0 grid pl-3 pr-2 py-2 border border-r-0 rounded-l-xl border-t-purple-600 border-purple-300 bg-black nav-shadow"
+                  className="absolute top-16 right-0 grid pl-3 pr-2 py-2 border border-r-0 rounded-l-xl border-t-purple-600 border-purple-300 bg-black z-50 nav-shadow"
                 >
                   <li className="h-full w-full border-b border-b-purple-300 flex justify-end pr-2 pb-1">
                     <a className="text-white font-semibold h-full" href="#home">

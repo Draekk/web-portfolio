@@ -65,7 +65,7 @@ function App() {
           id="aside"
           className={`${
             contactPanel ? "block" : "hidden"
-          } xl:inline-block lg:min-w-[240px] lg:w-[300px] w-screen sm:h-fit sm:pb-5 h-full xl:h-full sm:w-[300px] bg-black xl:bg-dark-transparent lg:mr-1 absolute left-0 xl:static border xl:border-b-0 border-purple-500 border-x-purple-300 border-l-0 xl:border-x border-r-0 sm:border-r sm:rounded-tr-xl sm:rounded-br-xl xl:rounded-t-xl xl:rounded-br-none ${
+          } xl:inline-block lg:min-w-[240px] lg:w-[300px] z-50 w-screen sm:h-fit sm:pb-5 h-full xl:h-full sm:w-[300px] bg-black xl:bg-dark-transparent lg:mr-1 absolute left-0 xl:static border xl:border-b-0 border-purple-500 border-x-purple-300 border-l-0 xl:border-x border-r-0 sm:border-r sm:rounded-tr-xl sm:rounded-br-xl xl:rounded-t-xl xl:rounded-br-none ${
             isWide ? "aside-shadow-none" : "aside-shadow"
           }`}
         >
