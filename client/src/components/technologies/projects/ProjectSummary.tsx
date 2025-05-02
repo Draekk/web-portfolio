@@ -26,8 +26,12 @@ function ProjectSummary({
       className="flex flex-col h-fit py-4 rounded-xl w-[95%] mx-auto"
     >
       <div className="flex md:justify-center">
-        <figure className="hidden overflow-hidden  md:flex items-center justify-center w-32 h-32 bg-red-400 rounded-lg">
-          <img src={project.screenshots[0].url} alt="project-picture" />
+        <figure className="hidden overflow-hidden  md:flex items-center justify-center w-32 h-32 rounded-lg">
+          <img
+            className="h-full w-full object-cover"
+            src={project.screenshots ? project.screenshots[0].url : "#"}
+            alt="project-picture"
+          />
         </figure>
         <div className="w-full md:w-[80%] px-4 flex flex-col justify-between">
           <h3 className="text-lg lg:text-xl font-black capitalize">
@@ -91,7 +95,7 @@ function ProjectSummary({
                       onClick={(e) => setPicUrl(e.currentTarget.src)}
                       src={s.url}
                       alt="project-screenshot"
-                      className="w-full cursor-pointer"
+                      className="w-full h-full object-cover cursor-pointer"
                     />
                   </figure>
                 </li>
