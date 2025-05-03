@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletRequest;
 @RestControllerAdvice
 public class HandlerController {
 
-    @ExceptionHandler({CustomException.class})
+    @ExceptionHandler({ CustomException.class })
     public ResponseEntity<ResponseDto<?>> customException(CustomException ex, HttpServletRequest request) {
         ResponseDto<?> response = new ResponseDto<>();
         response.setMessage(ex.getMessage());
@@ -27,12 +27,13 @@ public class HandlerController {
         response.setStatusCode(ex.getStatusCode());
         response.setPath(request.getRequestURI());
         response.getError().put("errorName", ex.getErrorName());
-        
+
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 
-    @ExceptionHandler({MethodArgumentNotValidException.class})
-    public ResponseEntity<ResponseDto<?>> methodArgumentNotValid(MethodArgumentNotValidException ex, HttpServletRequest request) {
+    @ExceptionHandler({ MethodArgumentNotValidException.class })
+    public ResponseEntity<ResponseDto<?>> methodArgumentNotValid(MethodArgumentNotValidException ex,
+            HttpServletRequest request) {
         ResponseDto<?> response = new ResponseDto<>();
         response.setMessage(ex.getMessage());
         response.setSuccess(false);
@@ -48,14 +49,14 @@ public class HandlerController {
     }
 
     @ExceptionHandler({
-        NullPointerException.class,
-        IllegalArgumentException.class,
-        HttpRequestMethodNotSupportedException.class,
-        DataIntegrityViolationException.class,
-        HttpMessageNotReadableException.class,
-        MissingPathVariableException.class,
-        NoResourceFoundException.class,
-        RuntimeException.class
+            NullPointerException.class,
+            IllegalArgumentException.class,
+            HttpRequestMethodNotSupportedException.class,
+            DataIntegrityViolationException.class,
+            HttpMessageNotReadableException.class,
+            MissingPathVariableException.class,
+            NoResourceFoundException.class,
+            RuntimeException.class
     })
     public ResponseEntity<ResponseDto<?>> globalErrorHandler(Exception ex, HttpServletRequest request) {
         ResponseDto<?> response = new ResponseDto<>();
@@ -64,12 +65,12 @@ public class HandlerController {
         response.setSuccess(false);
         response.setPath(request.getRequestURI());
         response.getError().put("errorName", ex.getClass().getSimpleName());
-        
-        if(ex instanceof HttpRequestMethodNotSupportedException) {
+
+        if (ex instanceof HttpRequestMethodNotSupportedException) {
             response.setStatusCode(HttpStatus.METHOD_NOT_ALLOWED.value());
             return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED.value()).body(response);
         }
-        
+
         return ResponseEntity.internalServerError().body(response);
     }
 }

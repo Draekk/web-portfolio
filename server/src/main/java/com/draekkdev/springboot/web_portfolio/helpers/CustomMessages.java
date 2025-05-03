@@ -9,7 +9,9 @@ public enum CustomMessages {
   UPDATED(HttpStatus.ACCEPTED.value(), "The item was updated successfully."),
   FOUND(HttpStatus.OK.value(), "Item(s) found correctly."),
   DELETED(HttpStatus.ACCEPTED.value(), "The item was deleted successfully."),
-  UNAUTHORIZED(HttpStatus.UNAUTHORIZED.value(), "Unauthorized. Invalid token.");
+  UNAUTHORIZED(HttpStatus.UNAUTHORIZED.value(), "Unauthorized. Invalid token."),
+  SENT(HttpStatus.OK.value(), "The email was sent successfully."),
+  NOT_SENT(HttpStatus.NOT_ACCEPTABLE.value(), "Invalid: Email not sent.");
 
   private int status;
   private String message;
