@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useFetchData } from "./useFetchData";
-import { tDetailedTechnology } from "../types/tTechnology";
+import { tDetailedTechnology, tSelectedTech } from "../types/tTechnology";
 
 export const useTechnology = () => {
   const { findAllTechnologies } = useFetchData();
@@ -12,7 +12,7 @@ export const useTechnology = () => {
     projects: [],
   };
 
-  const selectedTech: { enabled: boolean; id: number } = {
+  const selectedTech: tSelectedTech = {
     enabled: false,
     id: 0,
   };

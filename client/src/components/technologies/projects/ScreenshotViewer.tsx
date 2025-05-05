@@ -1,6 +1,8 @@
+import { useEffect, useRef } from "react";
 import { tScreenshot } from "../../../types/tProject";
 
 type tScreenshotViewerProps = {
+  screenshotViewer: boolean;
   setScreenshotViewer: (value: React.SetStateAction<boolean>) => void;
   picUrl: string;
   setPicUrl: (value: React.SetStateAction<string>) => void;
@@ -8,13 +10,29 @@ type tScreenshotViewerProps = {
 };
 
 function ScreenshotViewer({
+  screenshotViewer,
   setScreenshotViewer,
   picUrl,
   setPicUrl,
   screenshots,
 }: tScreenshotViewerProps) {
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    screenshotViewer && modalRef.current ? modalRef.current.focus() : null;
+  }, [screenshotViewer]);
+
+  const onEscapeDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Escape") {
+      setScreenshotViewer(false);
+    }
+  };
+
   return (
     <div
+      ref={modalRef}
+      tabIndex={0}
+      onKeyDown={onEscapeDown}
       id="screenshot-viewer"
       className="absolute h-screen top-0 left-0 z-50 w-screen py-2 lg:py-4 flex flex-col justify-between items-center"
     >

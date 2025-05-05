@@ -9,3 +9,8 @@ export type tTechnology = {
 export type tDetailedTechnology = tTechnology & {
   projects: tDetailedProject[];
 };
+
+export type tSelectedTech = {
+  enabled: boolean;
+  id: number;
+};

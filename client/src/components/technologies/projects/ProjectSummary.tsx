@@ -102,6 +102,7 @@ function ProjectSummary({
               ))}
               {screenshotViewer ? (
                 <ScreenshotViewer
+                  screenshotViewer={screenshotViewer}
                   setScreenshotViewer={setScreenshotViewer}
                   picUrl={picUrl}
                   setPicUrl={setPicUrl}
