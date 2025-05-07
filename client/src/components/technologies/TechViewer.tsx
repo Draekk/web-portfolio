@@ -18,15 +18,16 @@ function TechViewer({
   toggleTech,
 }: TTechViewerProps) {
   const [picUrl, setPicUrl] = useState("");
+  const [screenshotViewer, setScreenshotViewer] = useState(false);
 
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     selectTech.enabled && modalRef.current ? modalRef.current.focus() : null;
-  }, [selectTech.enabled]);
+  }, [selectTech.enabled, screenshotViewer]);
 
   const onEscapeDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === "Escape") {
+    if (e.key === "Escape" && !screenshotViewer) {
       toggleTech(selectTech.id);
     }
   };
@@ -49,6 +50,8 @@ function TechViewer({
               project={p}
               text={text}
               closeText={closeText}
+              screenshotViewer={screenshotViewer}
+              setScreenshotViewer={setScreenshotViewer}
             ></ProjectSummary>
           ))
         ) : (

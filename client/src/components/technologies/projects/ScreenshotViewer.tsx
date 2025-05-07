@@ -16,10 +16,12 @@ function ScreenshotViewer({
   setPicUrl,
   screenshots,
 }: tScreenshotViewerProps) {
-  const modalRef = useRef<HTMLDivElement>(null);
+  const modalScreenshotRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    screenshotViewer && modalRef.current ? modalRef.current.focus() : null;
+    screenshotViewer && modalScreenshotRef.current
+      ? modalScreenshotRef.current.focus()
+      : null;
   }, [screenshotViewer]);
 
   const onEscapeDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -30,7 +32,7 @@ function ScreenshotViewer({
 
   return (
     <div
-      ref={modalRef}
+      ref={modalScreenshotRef}
       tabIndex={0}
       onKeyDown={onEscapeDown}
       id="screenshot-viewer"

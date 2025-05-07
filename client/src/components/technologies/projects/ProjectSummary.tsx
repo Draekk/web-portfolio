@@ -8,6 +8,8 @@ type tProjectSummaryProps = tBtnScreenshot & {
   project: tDetailedProject;
   picUrl: string;
   setPicUrl: (value: React.SetStateAction<string>) => void;
+  screenshotViewer: boolean;
+  setScreenshotViewer: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 function ProjectSummary({
@@ -16,9 +18,10 @@ function ProjectSummary({
   setPicUrl,
   text,
   closeText,
+  screenshotViewer,
+  setScreenshotViewer,
 }: tProjectSummaryProps) {
   const [screenshotPanel, setScreenshotPanel] = useState(false);
-  const [screenshotViewer, setScreenshotViewer] = useState(false);
 
   return (
     <article
