@@ -18,3 +18,39 @@
     scale: 100%;
   }
 }
+
+.send-button {
+  position: relative;
+  animation: button-anim 2s linear normal;
+  opacity: 0;
+}
+
+@keyframes button-anim {
+  0% {
+    transform: rotateY(0deg);
+    opacity: 100%;
+  }
+  5% {
+    transform: rotateY(90deg);
+    background-size: cover;
+    background-position: center;
+    transform: translate(0, 0, 0);
+    opacity: 100%;
+  }
+  10% {
+    transform: rotateY(0deg);
+    background: url("https://res.cloudinary.com/dhaha1ozm/image/upload/v1744664245/gmail_ico_color_ktbaz5.png");
+    background-size: cover;
+    background-position: center;
+    transform: translate(0, 0, 0);
+    opacity: 100%;
+  }
+  40%,
+  100% {
+    scale: 0%;
+    background: url("https://res.cloudinary.com/dhaha1ozm/image/upload/v1744664245/gmail_ico_color_ktbaz5.png");
+    background-size: cover;
+    background-position: center;
+    transform: translate3d(800px, -300px, 0);
+  }
+}

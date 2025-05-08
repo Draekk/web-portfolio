@@ -2,7 +2,7 @@ import "../../App.css";
 import "./mailForm.css";
 import { tMailForm } from "../../types/tTextLang";
 import { useEffect, useRef, useState } from "react";
-import { tMailData } from "../../hooks/useMailSender";
+import { tMailData, useMailSender } from "../../hooks/useMailSender";
 
 type tMailFormProps = tMailForm & {
   mailModal: boolean;
@@ -18,9 +18,12 @@ function MailForm({
   setMailModal,
 }: tMailFormProps) {
   const modalRef = useRef<HTMLDivElement>(null);
+  const { sendMail, success, setSuccess, isSending, error, setError } =
+    useMailSender();
+  const sendButtonRef = useRef<HTMLButtonElement>(null);
 
   const initialMailData: () => tMailData = () => {
-    return { name: "", email: "", body: "" };
+    return { name: "", email: "", message: "" };
   };
 
   const [mailData, setMailData] = useState(initialMailData);
@@ -46,8 +49,23 @@ function MailForm({
 
   const mailSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setMailData(initialMailData);
-    setMailModal(false);
+    sendButtonRef.current?.classList.add("send-button");
+    if (sendButtonRef.current !== null) sendButtonRef.current.textContent = "";
+    const data = await sendMail(mailData);
+    data.success ? setSuccess(data.success) : setError(true);
+    setTimeout(() => {
+      if (data.success) {
+        console.log(success);
+        setMailData(initialMailData);
+        setMailModal(false);
+      } else {
+        if (sendButtonRef.current !== null)
+          sendButtonRef.current.textContent = send;
+        sendButtonRef.current?.classList.remove("send-button");
+        sendButtonRef.current?.classList.add("opacity-100");
+        setError(false);
+      }
+    }, 1800);
   };
 
   return (
@@ -78,6 +96,7 @@ function MailForm({
           <input
             type="text"
             id="name"
+            value={mailData.name}
             onChange={handleChange}
             placeholder={name}
             className="bg-white text-black text-lg text-nowrap py-1 pl-1"
@@ -90,26 +109,38 @@ function MailForm({
           <input
             type="email"
             id="email"
+            value={mailData.email}
             onChange={handleChange}
             placeholder={email}
             className="bg-white text-black text-lg text-nowrap py-1 pl-1"
           />
         </span>
         <span>
-          <label htmlFor="body"></label>
+          <label htmlFor="message"></label>
           <textarea
-            name="body"
-            id="body"
+            name="message"
+            id="message"
+            value={mailData.message}
             onChange={handleChange}
             className="bg-white text-black text-lg text-wrap p-1 my-2 w-full min-h-[150px] max-h-[200px]"
           ></textarea>
         </span>
-        <button
-          onClick={mailSubmit}
-          className="font-black bg-purple-600 hover:bg-purple-500 rounded py-2 self-end w-[100px] cursor-pointer"
-        >
-          {send}
-        </button>
+        <div className="flex items-center justify-between">
+          <p className="text-white">
+            {(isSending && <>Enviando...</>) ||
+              (success && <>Mensaje enviado!</>) ||
+              (error && <>No se pudo enviar el mensaje...</>)}
+          </p>
+          <button
+            id="send-button"
+            ref={sendButtonRef}
+            onClick={mailSubmit}
+            disabled={isSending || success}
+            className="font-black bg-purple-600 hover:bg-purple-500 rounded h-16 self-end w-[100px] cursor-pointer"
+          >
+            {send}
+          </button>
+        </div>
       </form>
     </div>
   );
