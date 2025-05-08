@@ -24,7 +24,8 @@ public class EmailServiceImpl implements EmailService {
     SimpleMailMessage message = new SimpleMailMessage();
     message.setFrom(fromAddress);
     message.setTo(fromAddress);
-    message.setSubject("Nuevo mensaje de " + request.getName() + ".");
+    message.setSubject("Nuevo mensaje de [" + request.getName() + "] desde tu Portafolio.");
+    message.setReplyTo(request.getEmail());
 
     String body = new StringBuilder()
         .append("De: ").append(request.getName())
