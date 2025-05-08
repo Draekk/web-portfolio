@@ -4,12 +4,14 @@ import Hero from "./components/hero/Hero";
 import PExperience from "./components/personal_experience/PExperience";
 import Technologies from "./components/technologies/Technologies";
 import ContactCard from "./components/contact/ContactCard";
+import MailForm from "./components/contact/MailForm";
 import "./App.css";
 import { textAll } from "./types/tTextLang";
 
 function App() {
   const [navPopUp, setNavPopUp] = useState(false);
   const [contactPanel, setContactPanel] = useState(false);
+  const [mailModal, setMailModal] = useState(false);
   const [isMobile, setIsMobile] = useState(
     window.matchMedia("(max-width: 760px)").matches
   );
@@ -94,23 +96,46 @@ function App() {
               text="GitHub"
             ></ContactCard>
             <ContactCard
-              imgUrl="https://res.cloudinary.com/dhaha1ozm/image/upload/v1744664245/gmail_ico_color_ktbaz5.png"
-              url="https://mail.google.com/mail/?view=cm&fs=1&to=rodriver1992@gmail.com"
-              text="Email"
-            ></ContactCard>
-            <ContactCard
               imgUrl={
                 "https://res.cloudinary.com/dhaha1ozm/image/upload/v1744664245/whatsapp_ico_color_mntrzv.png"
               }
               url={"https://wa.me/56951706253"}
               text="WhatsApp"
             ></ContactCard>
+            <button
+              onClick={() => setMailModal(true)}
+              className="flex items-center justify-start mx-5 w-full max-w-[350px] px-2 py-3 cursor-pointer border border-t-purple-500 border-purple-300 rounded-xl hover:scale-105 hover:border-dashed hover:bg-purple-950 hover:font-black hover:relative transition-all"
+            >
+              <figure className="w-8 h-8 overflow-hidden flex justify-center items-center">
+                <img
+                  className="w-full"
+                  src="https://res.cloudinary.com/dhaha1ozm/image/upload/v1744664245/gmail_ico_color_ktbaz5.png"
+                  alt="Email"
+                />
+              </figure>
+              <span className="text-lg lg:text-xl text-white w-full ml-3 text-left">
+                Email
+              </span>
+            </button>
+            {mailModal ? (
+              <MailForm
+                title={lang.mailForm.title}
+                name={lang.mailForm.name}
+                email={lang.mailForm.email}
+                send={lang.mailForm.send}
+                mailModal={mailModal}
+                setMailModal={setMailModal}
+              ></MailForm>
+            ) : (
+              <></>
+            )}
           </section>
         </aside>
         <main
           onClick={() => {
             setNavPopUp(false);
             setContactPanel(false);
+            setMailModal(false);
           }}
           className="
           

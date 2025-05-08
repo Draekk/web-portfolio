@@ -10,6 +10,7 @@ export type tLang = {
   technologies: tTechnologies;
   contact: tContact;
   btnScreenshot: tBtnScreenshot;
+  mailForm: tMailForm;
 };
 
 export type tHeader = {
@@ -35,6 +36,13 @@ export type tTechnologies = {
 
 export type tContact = {
   title: string;
+};
+
+export type tMailForm = {
+  title: string;
+  name: string;
+  email: string;
+  send: string;
 };
 
 export type tBtnScreenshot = {
@@ -70,6 +78,12 @@ export const textAll: tTextAll = {
       text: "Capturas",
       closeText: "Cerrar",
     },
+    mailForm: {
+      title: "Envíame un Correo",
+      name: "Nombre",
+      email: "Correo electrónico",
+      send: "Enviar",
+    },
   },
   en: {
     header: {
@@ -97,6 +111,12 @@ export const textAll: tTextAll = {
     btnScreenshot: {
       text: "Screenshots",
       closeText: "Close",
+    },
+    mailForm: {
+      title: "Send me an Email",
+      name: "Name",
+      email: "Email",
+      send: "Send",
     },
   },
 };

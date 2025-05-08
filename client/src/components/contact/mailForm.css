@@ -1,0 +1,20 @@
+#mail-form {
+  z-index: 50;
+  left: 0;
+  animation: mail-anim 0.5s linear normal;
+}
+
+@keyframes mail-anim {
+  0% {
+    left: -50%;
+    scale: 100% 1%;
+  }
+  80% {
+    left: 0;
+    scale: 100% 1%;
+  }
+  100% {
+    left: 0;
+    scale: 100%;
+  }
+}
