@@ -17,11 +17,10 @@ public class TokenInterceptor implements HandlerInterceptor {
   @SuppressWarnings("null")
   @Override
   public boolean preHandle(
-    HttpServletRequest request,
-    HttpServletResponse response,
-    Object handler
-  ) throws Exception {
-    if ("GET".equalsIgnoreCase(request.getMethod())) {
+      HttpServletRequest request,
+      HttpServletResponse response,
+      Object handler) throws Exception {
+    if ("GET".equalsIgnoreCase(request.getMethod()) || request.getRequestURI().contains("/mail/send")) {
       return true;
     }
 
