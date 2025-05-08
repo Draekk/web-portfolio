@@ -1,7 +1,8 @@
 import "../../App.css";
 import "./mailForm.css";
 import { tMailForm } from "../../types/tTextLang";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { tMailData } from "../../hooks/useMailSender";
 
 type tMailFormProps = tMailForm & {
   mailModal: boolean;
@@ -18,9 +19,24 @@ function MailForm({
 }: tMailFormProps) {
   const modalRef = useRef<HTMLDivElement>(null);
 
+  const initialMailData: () => tMailData = () => {
+    return { name: "", email: "", body: "" };
+  };
+
+  const [mailData, setMailData] = useState(initialMailData);
+
   useEffect(() => {
     mailModal && modalRef.current ? modalRef.current.focus() : null;
   }, [mailModal]);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setMailData({
+      ...mailData,
+      [e.target.id]: e.target.value,
+    });
+  };
 
   const onEscapeDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "Escape") {
@@ -28,7 +44,9 @@ function MailForm({
     }
   };
 
-  const mailSubmit = () => {
+  const mailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setMailData(initialMailData);
     setMailModal(false);
   };
 
@@ -60,6 +78,7 @@ function MailForm({
           <input
             type="text"
             id="name"
+            onChange={handleChange}
             placeholder={name}
             className="bg-white text-black text-lg text-nowrap py-1 pl-1"
           />
@@ -71,6 +90,7 @@ function MailForm({
           <input
             type="email"
             id="email"
+            onChange={handleChange}
             placeholder={email}
             className="bg-white text-black text-lg text-nowrap py-1 pl-1"
           />
@@ -80,6 +100,7 @@ function MailForm({
           <textarea
             name="body"
             id="body"
+            onChange={handleChange}
             className="bg-white text-black text-lg text-wrap p-1 my-2 w-full min-h-[150px] max-h-[200px]"
           ></textarea>
         </span>
