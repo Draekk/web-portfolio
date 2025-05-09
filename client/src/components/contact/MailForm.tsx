@@ -74,10 +74,10 @@ function MailForm({
       tabIndex={0}
       onKeyDown={onEscapeDown}
       id="mail-form"
-      className="flex flex-col absolute p-5 bg-black border-2 border-l-0 rounded-xl rounded-l-none border-t-purple-600 border-purple-300 text-white w-[500px] aside-shadow"
+      className="flex flex-col absolute top-0 xl:top-auto sm:p-2 lg:p-5 bg-black border-t lg:border-2 lg:border-l-0 lg:rounded-r-xl border-t-purple-600 border-purple-300 text-white w-screen h-screen lg:w-[500px] aside-shadow"
     >
       <div className="flex items-center sm:justify-center px-1 w-full">
-        <h2 className="font-black text-xl text-white text-center my-5 ml-auto">
+        <h2 className="font-black text-xl text-white text-center xl:my-5 ml-auto">
           {title}
         </h2>
         <button
@@ -88,8 +88,8 @@ function MailForm({
           <i className="fa-solid fa-xmark lg:text-xl text-white"></i>
         </button>
       </div>
-      <form className="flex flex-col">
-        <span className="flex flex-col">
+      <form className="grid grid-cols-2 gap-2">
+        <span className="flex flex-col col-span-2 sm:col-span-1">
           <label htmlFor="name" className="underline italic pb-1 font-bold">
             {name}:
           </label>
@@ -99,10 +99,10 @@ function MailForm({
             value={mailData.name}
             onChange={handleChange}
             placeholder={name}
-            className="bg-white text-black text-lg text-nowrap py-1 pl-1"
+            className="bg-white text-black text-lg text-nowrap pl-1"
           />
         </span>
-        <span className="flex flex-col my-2">
+        <span className="flex flex-col col-span-2 sm:col-span-1">
           <label htmlFor="email" className="underline italic pb-1 font-bold">
             {email}:
           </label>
@@ -112,35 +112,34 @@ function MailForm({
             value={mailData.email}
             onChange={handleChange}
             placeholder={email}
-            className="bg-white text-black text-lg text-nowrap py-1 pl-1"
+            className="bg-white text-black text-lg text-nowrap pl-1"
           />
         </span>
-        <span>
+
+        <span className="col-span-2">
           <label htmlFor="message"></label>
           <textarea
             name="message"
             id="message"
             value={mailData.message}
             onChange={handleChange}
-            className="bg-white text-black text-lg text-wrap p-1 my-2 w-full min-h-[150px] max-h-[200px]"
+            className="bg-white text-black text-lg text-wrap p-1 w-full h-32 lg:h-44"
           ></textarea>
         </span>
-        <div className="flex items-center justify-between">
-          <p className="text-white">
-            {(isSending && <>Enviando...</>) ||
-              (success && <>Mensaje enviado!</>) ||
-              (error && <>No se pudo enviar el mensaje...</>)}
-          </p>
-          <button
-            id="send-button"
-            ref={sendButtonRef}
-            onClick={mailSubmit}
-            disabled={isSending || success}
-            className="font-black bg-purple-600 hover:bg-purple-500 rounded h-16 self-end w-[100px] cursor-pointer"
-          >
-            {send}
-          </button>
-        </div>
+        <p className="text-white">
+          {(isSending && <>Enviando...</>) ||
+            (success && <>Mensaje enviado!</>) ||
+            (error && <>No se pudo enviar el mensaje...</>)}
+        </p>
+        <button
+          id="send-button"
+          ref={sendButtonRef}
+          onClick={mailSubmit}
+          disabled={isSending || success}
+          className="font-black place-self-end bg-purple-600 hover:bg-purple-500 rounded h-12 sm:h-14 w-20 sm:w-[100px] cursor-pointer"
+        >
+          {send}
+        </button>
       </form>
     </div>
   );
