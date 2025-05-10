@@ -67,12 +67,12 @@ function App() {
           id="aside"
           className={`${
             contactPanel ? "block" : "hidden"
-          } xl:inline-block lg:min-w-[240px] lg:w-[300px] z-50 w-screen sm:h-fit sm:pb-5 h-full xl:h-full sm:w-[300px] bg-black xl:bg-dark-transparent lg:mr-1 absolute left-0 xl:static border xl:border-b-0 border-purple-500 border-x-purple-300 border-l-0 xl:border-x border-r-0 sm:border-r sm:rounded-tr-xl sm:rounded-br-xl xl:rounded-t-xl xl:rounded-br-none ${
+          } xl:inline-block lg:min-w-[240px] lg:w-[300px] pb-[2vh] z-50 w-screen sm:h-fit h-[85vh] xl:h-full sm:w-[300px] bg-black xl:bg-dark-transparent lg:mr-1 absolute left-0 xl:static border xl:border-b-0 border-purple-500 border-x-purple-300 border-l-0 xl:border-x border-r-0 sm:border-r sm:rounded-tr-xl sm:rounded-br-xl xl:rounded-t-xl xl:rounded-br-none ${
             isWide ? "aside-shadow-none" : "aside-shadow"
           }`}
         >
-          <div className="flex items-center sm:justify-center px-1 w-full">
-            <h2 className="font-black text-xl text-white text-center my-5 ml-auto xl:mx-auto">
+          <div className="flex items-center sm:justify-center py-[2vh] px-1 w-full">
+            <h2 className="font-black text-xl text-white text-center ml-auto xl:mx-auto">
               {lang.contact.title}
             </h2>
             <button
@@ -117,20 +117,20 @@ function App() {
                 Email
               </span>
             </button>
-            {mailModal ? (
-              <MailForm
-                title={lang.mailForm.title}
-                name={lang.mailForm.name}
-                email={lang.mailForm.email}
-                send={lang.mailForm.send}
-                mailModal={mailModal}
-                setMailModal={setMailModal}
-              ></MailForm>
-            ) : (
-              <></>
-            )}
           </section>
         </aside>
+        {mailModal ? (
+          <MailForm
+            title={lang.mailForm.title}
+            name={lang.mailForm.name}
+            email={lang.mailForm.email}
+            send={lang.mailForm.send}
+            mailModal={mailModal}
+            setMailModal={setMailModal}
+          ></MailForm>
+        ) : (
+          <></>
+        )}
         <main
           onClick={() => {
             setNavPopUp(false);

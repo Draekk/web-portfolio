@@ -74,7 +74,7 @@ function MailForm({
       tabIndex={0}
       onKeyDown={onEscapeDown}
       id="mail-form"
-      className="flex flex-col absolute top-0 xl:top-auto sm:p-2 lg:p-5 bg-black border-t lg:border-2 lg:border-l-0 lg:rounded-r-xl border-t-purple-600 border-purple-300 text-white w-screen h-screen lg:w-[500px] aside-shadow"
+      className="flex flex-col py-[5vh] absolute xl:top-auto p-1 sm:px-2 lg:p-5 bg-black border-t lg:border-2 lg:border-l-0 lg:rounded-r-xl border-t-purple-600 border-purple-300 text-white w-screen h-[85vh]  lg:h-fit lg:w-[500px] aside-shadow"
     >
       <div className="flex items-center sm:justify-center px-1 w-full">
         <h2 className="font-black text-xl text-white text-center xl:my-5 ml-auto">
@@ -123,7 +123,7 @@ function MailForm({
             id="message"
             value={mailData.message}
             onChange={handleChange}
-            className="bg-white text-black text-lg text-wrap p-1 w-full h-32 lg:h-44"
+            className="bg-white text-black text-lg text-wrap p-1 w-full h-[40vh] lg:h-44"
           ></textarea>
         </span>
         <p className="text-white">

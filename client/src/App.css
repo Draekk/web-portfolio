@@ -40,6 +40,7 @@ main::-webkit-scrollbar {
     max-height: 5.5rem;
   }
   #aside {
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }

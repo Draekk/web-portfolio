@@ -54,3 +54,36 @@
     transform: translate3d(-800px, -300px, 0);
   }
 }
+
+@media (max-width: 1024px) {
+  #mail-form {
+    z-index: 50;
+    top: 0;
+    left: 0;
+    animation: mail-anim 0.15s linear normal;
+  }
+
+  @keyframes mail-anim {
+    from {
+      left: 0;
+      scale: 100% 0%;
+    }
+    to {
+      left: 0;
+      scale: 100%;
+    }
+  }
+}
+
+@media (max-height: 599px) {
+  #mail-form {
+    top: 0;
+    height: 100vh;
+  }
+}
+
+@media (min-height: 600px) {
+  #mail-form {
+    top: auto;
+  }
+}
