@@ -90,7 +90,7 @@ function App() {
               url={
                 "https://drive.google.com/uc?export=download&id=1t-mRDL6ktxKsRu5X--QNqvO3siV1bxKi"
               }
-              text="Download CV"
+              text="Curriculum Vitae"
             ></ContactCard>
             <ContactCard
               imgUrl={
