@@ -85,6 +85,15 @@ function App() {
           <section className="grid grid-cols-1 gap-y-3 xl:gap-y-6 max-w-full justify-items-center px-4">
             <ContactCard
               imgUrl={
+                "https://res.cloudinary.com/dhaha1ozm/image/upload/v1747064331/curriculum-vitae_pruzry.png"
+              }
+              url={
+                "https://drive.google.com/uc?export=download&id=1t-mRDL6ktxKsRu5X--QNqvO3siV1bxKi"
+              }
+              text="Download CV"
+            ></ContactCard>
+            <ContactCard
+              imgUrl={
                 "https://res.cloudinary.com/dhaha1ozm/image/upload/v1744664244/linkedin_ico_color_lyeulq.png"
               }
               url={"https://linkedin.com/in/gever-rodriguez"}
