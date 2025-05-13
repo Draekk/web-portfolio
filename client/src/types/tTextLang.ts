@@ -22,6 +22,7 @@ export type tHeader = {
 };
 
 export type tHero = {
+  title: string;
   paragraph: string;
 };
 
@@ -54,12 +55,13 @@ export const textAll: tTextAll = {
   es: {
     header: {
       title: "PORTAFOLIO WEB",
-      navHome: "Inicio",
+      navHome: "Sobre mí",
       navExperience: "Experiencia",
       navTechnologies: "Tecnologias",
       navContact: "Contáctame",
     },
     hero: {
+      title: "Sobre mí",
       paragraph:
         "Hola, soy <b>Gever Rodríguez</b>, aunque en el mundo del desarrollo me conocen como <b>Draekkdev</b>. Desde muy joven he sentido una gran curiosidad por la tecnología y especialmente por entender qué ocurre detrás de una pantalla o una interfaz.<br /><br /> Me motiva profundamente resolver problemas, optimizar procesos y desarrollar soluciones que contribuyan a mejorar la funcionalidad, el rendimiento y la eficiencia de los sistemas con los que trabajo.<br /><br /> Me considero una persona <b>responsable</b>, <b>autodidacta</b> y <b>perseverante</b>. Mantengo un compromiso constante con el aprendizaje, la exploración de nuevas ideas y la aplicación de soluciones creativas en cada proyecto en el que participo.",
     },
@@ -88,12 +90,13 @@ export const textAll: tTextAll = {
   en: {
     header: {
       title: "PORTFOLIO WEB",
-      navHome: "Home",
+      navHome: "About me",
       navExperience: "Experience",
       navTechnologies: "Technologies",
       navContact: "Contact me",
     },
     hero: {
+      title: "About me",
       paragraph:
         "Hello, I'm <b>Gever Rodríguez</b>, although in the dev world I'm known as <b>Draekkdev</b>. Since I was young, I've been deeply curious about technology, especially about what happens behind a screen or an interface.<br /><br />I'm passionate about solving problems, optimizing processes, and building solutions that improve the functionality, performance, and efficiency of the systems I work with.<br /><br />I consider myself a <b>responsible</b>, <b>self-taught</b>, and <b>persistent</b> person. I'm constantly committed to learning, exploring new ideas, and applying creative solutions to every project I take part in.",
     },

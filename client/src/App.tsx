@@ -158,7 +158,7 @@ function App() {
           text-justify 
         "
         >
-          <Hero paragraph={lang.hero.paragraph}></Hero>
+          <Hero title={lang.hero.title} paragraph={lang.hero.paragraph}></Hero>
           <PExperience
             title={lang.experience.title}
             paragraph={lang.experience.paragraph}
