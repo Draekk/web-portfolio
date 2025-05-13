@@ -18,7 +18,7 @@ function App() {
   const [isWide, setIsWide] = useState(
     window.matchMedia("(min-width: 1280px)").matches
   );
-  const [lang, setLang] = useState(textAll.es);
+  const [lang, setLang] = useState(textAll.en);
 
   const toggleLang: () => void = () => {
     setLang((prevLang) => (prevLang === textAll.es ? textAll.en : textAll.es));

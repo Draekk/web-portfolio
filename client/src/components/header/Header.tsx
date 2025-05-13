@@ -127,7 +127,7 @@ function Header({
                   onClick={toggleLang}
                   className="text-white font-semibold flex items-center lg:text-lg xl:text-xl border-2 border-purple-600 hover:bg-purple-950 border-dashed p-3 rounded-full cursor-pointer"
                 >
-                  es/en
+                  en/es
                 </button>
               </li>
             </ul>

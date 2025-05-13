@@ -47,7 +47,7 @@ function Technology({
         cardEffectLeave(e);
       }}
       className="flex flex-col justify-center items-center tech-card hover:cursor-pointer"
-      title={"Ver proyectos con ".concat(name)}
+      title={"Shows projects with ".concat(name)}
     >
       <figure className="w-14 h-14 lg:w-28 lg:h-28 rounded-full p-1 flex items-center justify-center">
         <img src={logoUrl} alt={name} className="w-[75%]" />
