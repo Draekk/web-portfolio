@@ -1,4 +1,4 @@
-**Portafolio Web**
+# **Portafolio Web**
 
 Este repositorio contiene mi portafolio personal, donde presento quién soy, mis áreas de expertise y los proyectos que he desarrollado.
 
@@ -30,7 +30,7 @@ Mi portafolio web es una aplicación fullstack que habla un poco sobre mí, mis 
 
 * **Frontend**:
 
-  * React (librería)
+  * React
   * TypeScript
   * Tailwind CSS
 * **Backend**:
@@ -38,7 +38,6 @@ Mi portafolio web es una aplicación fullstack que habla un poco sobre mí, mis 
   * Spring Boot
   * Spring Data JPA
   * Hibernate
-  * Lombok
 * **Base de datos**:
 
   * PostgreSQL
@@ -96,7 +95,7 @@ Para configurar y ejecutar el proyecto en tu entorno local, sigue estos pasos:
    DB_PASSWORD=example_pg_pass
 
    ### Token
-   SECRET_TOKEN=example_secret_token_123
+   SECRET_TOKEN=example_secret_token_123 # Token utilizado para todas las solicitudes POST, PUT y DELETE
 
    ### Mail
    MAIL_HOST=smtp.gmail.com
