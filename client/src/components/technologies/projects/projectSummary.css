@@ -10,3 +10,32 @@
 .hover-pic:hover {
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
+
+@media (max-height: 425px) {
+  #screenshot-viewer {
+    flex-direction: row-reverse;
+  }
+
+  #screenshot-viewer ul {
+    flex-direction: column;
+    max-height: 90%;
+    gap: 10px 0;
+  }
+
+  #screenshot-viewer > div {
+    justify-content: start;
+    height: 100%;
+  }
+
+  #screenshot-viewer > div figure {
+    width: fit-content;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: scroll;
+    align-items: start;
+  }
+
+  #screenshot-viewer > div figure > img {
+    height: 100%;
+  }
+}
