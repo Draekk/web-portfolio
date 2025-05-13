@@ -6,22 +6,12 @@ import { tBtnScreenshot } from "../../../types/tTextLang";
 
 type tProjectSummaryProps = tBtnScreenshot & {
   project: tDetailedProject;
-  picUrl: string;
-  setPicUrl: (value: React.SetStateAction<string>) => void;
-  screenshotViewer: boolean;
-  setScreenshotViewer: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function ProjectSummary({
-  project,
-  picUrl,
-  setPicUrl,
-  text,
-  closeText,
-  screenshotViewer,
-  setScreenshotViewer,
-}: tProjectSummaryProps) {
+function ProjectSummary({ project, text, closeText }: tProjectSummaryProps) {
   const [screenshotPanel, setScreenshotPanel] = useState(false);
+  const [screenshotViewer, setScreenshotViewer] = useState(false);
+  const [picUrl, setPicUrl] = useState("");
 
   return (
     <article
@@ -105,7 +95,6 @@ function ProjectSummary({
               ))}
               {screenshotViewer ? (
                 <ScreenshotViewer
-                  screenshotViewer={screenshotViewer}
                   setScreenshotViewer={setScreenshotViewer}
                   picUrl={picUrl}
                   setPicUrl={setPicUrl}
