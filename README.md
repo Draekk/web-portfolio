@@ -1,101 +1,96 @@
-# **Portafolio Web**
+# **Web Portfolio**
 
-Este repositorio contiene mi portafolio personal, donde presento quién soy, mis áreas de expertise y los proyectos que he desarrollado.
+This repository contains my personal portfolio, where I present who I am, my areas of expertise, and the projects I have developed.
 
 ---
 
-## Contenido
+## Table of Contents
 
-1. [Descripción](#descripción)
-2. [Características](#características)
-3. [Tecnologías](#tecnologías)
-4. [Estructura del Proyecto](#estructura-del-proyecto)
+1. [Description](#description)
+2. [Features](#features)
+3. [Technologies](#technologies)
+4. [Project Structure](#project-structure)
 5. [API Endpoints](#api-endpoints)
-6. [Despliegue](#despliegue)
-7. [Instalación y Uso](#instalación-y-uso)
+6. [Deployment](#deployment)
+7. [Installation & Usage](#installation--usage)
 
 ---
 
-## Descripción
+## Description
 
-Mi portafolio web es una aplicación fullstack que habla un poco sobre mí, mis habilidades y tecnologías, y muestra los proyectos que he realizado. El frontend está desarrollado con React + TypeScript y Tailwind CSS, y el backend corre sobre Spring Boot con Spring Data JPA, Hibernate y PostgreSQL como base de datos.
+My web portfolio is a fullstack application that shares a bit about me, my skills and technologies, and showcases the projects I've worked on. The frontend is built with React + TypeScript and Tailwind CSS, while the backend runs on Spring Boot with Spring Data JPA, Hibernate, and PostgreSQL as the database.
 
-## Características
+## Features
 
-* **Listado de Proyectos**: desde el frontend se pueden consultar todos los proyectos.
-* **CRUD en Backend**: endpoints para Crear, Leer, Actualizar y Borrar proyectos (solo acceso privado para mayor seguridad).
-* **Gestión de Tecnologías**: cada tecnología muestra los proyectos en los que se utilizó, y cada proyecto muestra las tecnologías empleadas.
+* **Project Listing**: all projects can be viewed from the frontend.
+* **Backend CRUD**: endpoints to Create, Read, Update, and Delete projects (restricted to private access for security).
+* **Technology Management**: each technology shows the projects it was used in, and each project displays the technologies it used.
 
-## Tecnologías
+## Technologies
 
 * **Frontend**:
-
   * React
   * TypeScript
   * Tailwind CSS
-* **Backend**:
 
+* **Backend**:
   * Spring Boot
   * Spring Data JPA
   * Hibernate
-* **Base de datos**:
 
+* **Database**:
   * PostgreSQL
 
-## Estructura del Proyecto
+## Project Structure
 
 ```
 /
-├── client/   # Código del frontend (React + TypeScript + Tailwind CSS)
-├── server/   # Servicio backend (Spring Boot + Spring Data JPA + Hibernate)
-└── README.md # Documento principal del proyecto
+├── client/   # Frontend code (React + TypeScript + Tailwind CSS)
+├── server/   # Backend service (Spring Boot + Spring Data JPA + Hibernate)
+└── README.md # Main project documentation
 ```
 
 ## API Endpoints
 
-Todos los endpoints disponibles de la API están documentados en la URL base:
+All available API endpoints are documented at the following base URL:
 
 ```
 https://draekkdev-portfolio.onrender.com/api
 ```
 
-Simplemente navegando a esta ruta podrás ver la lista completa de recursos y métodos soportados por el backend.
+Just visit this URL to view the complete list of backend resources and supported methods.
 
-## Despliegue
+## Deployment
 
-* **Frontend**: alojado en Vercel (`https://web-portfolio-two-lilac.vercel.app`).
-* **Backend**: desplegado en Render (`https://draekkdev-portfolio.onrender.com`).
+* **Frontend:** hosted on Vercel `https://web-portfolio-two-lilac.vercel.app`
 
-## Instalación y Uso
+* **Backend:** deployed on Render `https://draekkdev-portfolio.onrender.com`
 
-Para configurar y ejecutar el proyecto en tu entorno local, sigue estos pasos:
+## Installation & Usage
 
-1. Clona el repositorio:
+To set up and run the project locally, follow these steps:
 
+1. Clone the repository:
    ```bash
    git clone https://github.com/Draekk/web-portfolio.git
    cd web-portfolio
    ```
-
-2. Crea el archivo de variables de entorno dentro de la carpeta `server/`:
-
+2. Create the environment variables file inside the `server/` folder:
    ```bash
    cd server
    touch .env
    ```
-
-3. Abre `.env` y añade las siguientes variables de ejemplo:
-
+3. Open `.env` and add the following sample variables:
    ```env
-   ### PostgreSQL (predeterminado)
+   ### PostgreSQL (default)
    DB_HOST=localhost
    DB_PORT=5432
    DB_NAME=example_postgres_db
    DB_USERNAME=example_pg_user
    DB_PASSWORD=example_pg_pass
-
-   ### Token
-   SECRET_TOKEN=example_secret_token_123 # Token utilizado para todas las solicitudes POST, PUT y DELETE
+   
+   ###Token
+   SECRET_TOKEN=example_secret_token_123 # Token used for all POST, PUT and DELETE requests
 
    ### Mail
    MAIL_HOST=smtp.gmail.com
@@ -103,30 +98,23 @@ Para configurar y ejecutar el proyecto en tu entorno local, sigue estos pasos:
    MAIL_USERNAME=example@mail.com
    MAIL_PASSWORD=example_mail_password
    ```
-
-4. Construye y arranca el backend:
-
+4. Build and run the backend:
    ```bash
    cd server
    ./mvnw clean -DskipTests
    export $(cat .env | xargs)
    java -jar target/web-portfolio-0.0.1-SNAPSHOT.jar
    ```
-
-5. Configura las variables de entorno del frontend y arranca la aplicación:
-
+5. Set up frontend environment variables and run the frontend:
    ```bash
    cd ../client
    touch .env
    ```
-
-   Abre .env y añade:
-
+   Open `.env` and add:
    ```env
    VITE_API_URL=http://localhost:8080/api
    ```
-   Instala dependencias y arranca el frontend:
-
+   Install dependencies and run the app:
    ```bash
    npm install
    npm run dev
