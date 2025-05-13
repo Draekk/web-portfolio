@@ -48,8 +48,6 @@ function Technologies({ title, btnScreenshot }: tTechnologiesProps) {
         </div>
         {selectTech.enabled ? (
           <TechViewer
-            selectTech={selectTech}
-            toggleTech={toggleTech}
             tech={tech}
             text={btnScreenshot.text}
             closeText={btnScreenshot.closeText}
