@@ -120,10 +120,14 @@ Para configurar y ejecutar el proyecto en tu entorno local, sigue estos pasos:
    touch .env
    ```
 
-   Abre `.env` y añade:
+   Abre .env y añade:
 
    ```env
    VITE_API_URL=http://localhost:8080/api
    ```
+   Instala dependencias y arranca el frontend:
 
-#
+   ```bash
+   npm install
+   npm run dev
+   ```
