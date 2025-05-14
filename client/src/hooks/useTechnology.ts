@@ -3,7 +3,7 @@ import { useFetchData } from "./useFetchData";
 import { tDetailedTechnology, tSelectedTech } from "../types/tTechnology";
 
 export const useTechnology = () => {
-  const { findAllTechnologies } = useFetchData();
+  const { findAllTechnologies, findStarredProject } = useFetchData();
 
   const newTech: tDetailedTechnology = {
     id: 0,
@@ -23,7 +23,16 @@ export const useTechnology = () => {
 
   const fetchTechnologies: () => void = async () => {
     const tempTechList = await findAllTechnologies();
-    tempTechList !== null ? setTechList(tempTechList) : null;
+    const featuredProject = await findStarredProject();
+
+    const featuredTech: tDetailedTechnology = {
+      id: -1,
+      name: "Featured",
+      logoUrl: import.meta.env.VITE_FEATURED_LOGO_URL,
+      projects: featuredProject !== null ? [...featuredProject] : [],
+    };
+
+    setTechList([featuredTech, ...(tempTechList ?? [])]);
   };
 
   useEffect(() => {

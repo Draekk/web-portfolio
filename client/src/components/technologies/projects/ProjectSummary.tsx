@@ -44,18 +44,18 @@ function ProjectSummary({ project, text, closeText }: tProjectSummaryProps) {
               {project.url}
             </a>
           </div>
-          <div className="flex flex-col-reverse md:flex-row justify-between">
+          <div className="flex flex-col-reverse md:flex-row md:items-center justify-between">
             <button
               onClick={() => setScreenshotPanel(!screenshotPanel)}
               className={`${
                 screenshotPanel
                   ? "bg-red-700 hover:bg-red-600"
                   : "bg-purple-700 hover:shadow-purple-600"
-              } cursor-pointer font-black hover:shadow-sm  rounded-full p-2 md:px-6 md:py-0 my-3 `}
+              } cursor-pointer font-black hover:shadow-sm  rounded-full h-10 md:w-36 mt-4 md:mt-0 md:px-6 `}
             >
               {screenshotPanel ? closeText : text}
             </button>
-            <ul className="flex flex-wrap justify-center md:justify-end gap-x-5 justify-self-end w-full md:w-[70%]">
+            <ul className="flex flex-wrap justify-center md:justify-end gap-5 justify-self-end w-full md:w-[70%]">
               {project.technologies.length > 0 ? (
                 project.technologies.map((t) => (
                   <li key={t.id}>
