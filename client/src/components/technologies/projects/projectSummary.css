@@ -18,6 +18,7 @@
 
   #screenshot-viewer ul {
     flex-direction: column;
+    height: 100%;
     max-height: 90%;
     gap: 10px 0;
   }

@@ -17,27 +17,34 @@ function ScreenshotViewer({
   return (
     <div
       id="screenshot-viewer"
-      className="absolute h-screen top-0 left-0 z-50 w-screen flex flex-col items-center justify-around"
+      className="fixed inset-0 z-50 w-full h-full bg-black/90 p-3 flex flex-col items-center justify-center overflow-hidden"
     >
-      <div className="flex flex-col items-center md:w-[70%] justify-center gap-y-5 max-h-[80%]">
-        <div
+      {/* Botón de cerrar flotante */}
+      <div className="absolute top-3 right-3 z-50">
+        <button
           onClick={() => setScreenshotViewer(false)}
-          className="self-end border border-white rounded-full w-5 h-5 lg:w-8 lg:h-8 flex items-center justify-center cursor-pointer"
+          className="border border-white rounded-full w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center cursor-pointer bg-black/50 hover:bg-black/70 transition"
         >
-          <i className="fa-solid fa-xmark lg:text-2xl"></i>
-        </div>
-        <figure className="flex items-center justify-center h-fit max-h-[90%] rounded-sm md:rounded overflow-hidden">
+          <i className="fa-solid fa-xmark text-white text-lg lg:text-2xl"></i>
+        </button>
+      </div>
+
+      {/* Imagen principal */}
+      <div className="flex flex-col items-center justify-center gap-y-3 w-full md:w-[70%] flex-1 overflow-hidden">
+        <figure className="flex items-center justify-center h-full w-full overflow-hidden rounded-sm md:rounded">
           <img
-            className="w-full h-full object-contain"
+            className="max-h-full max-w-full object-contain"
             src={picUrl}
             alt="project-screenshot"
           />
         </figure>
       </div>
-      <ul className="flex gap-x-2 lg:gap-x-5 justify-start max-w-[90%] max-h-[85px] overflow-x-auto">
+
+      {/* Miniaturas */}
+      <ul className="flex gap-x-2 lg:gap-x-5 justify-start max-w-[90%] h-[85px] overflow-x-auto mt-2">
         {screenshots.map((s) => (
           <li key={s.id}>
-            <figure className="w-16 h-16 lg:w-20 lg:h-20 overflow-hidden rounded-sm md:rounded-lg flex items-center justify-center hover-pic target:border-2 target:border-teal-400">
+            <figure className="w-16 h-16 lg:w-20 lg:h-20 overflow-hidden rounded-sm md:rounded-lg flex items-center justify-center hover-pic">
               <img
                 onClick={(e) => setPicUrl(e.currentTarget.src)}
                 src={s.url}
