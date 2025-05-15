@@ -6,7 +6,7 @@ function PExperience({ title, paragraph }: tExperience) {
   return (
     <section
       id="personal-experience"
-      className="flex flex-col gap-y-3 text-white min-h-[85vh]"
+      className="flex flex-col gap-y-3 text-white min-h-[85vh] py-3"
     >
       <h2 className="font-black text-2xl lg:text-4xl mb-5">
         <span>
@@ -17,10 +17,12 @@ function PExperience({ title, paragraph }: tExperience) {
         </span>
         {title}
       </h2>
-      <p
-        className="md:text-lg lg:text-xl"
-        dangerouslySetInnerHTML={{ __html: paragraph }}
-      ></p>
+      <div className="overflow-y-auto">
+        <p
+          className="md:text-lg lg:text-xl"
+          dangerouslySetInnerHTML={{ __html: paragraph }}
+        ></p>
+      </div>
     </section>
   );
 }
