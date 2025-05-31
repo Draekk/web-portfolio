@@ -89,7 +89,7 @@ export const textAll: tTextAll = {
   },
   en: {
     header: {
-      title: "PORTFOLIO WEB",
+      title: "WEB PORTFOLIO",
       navHome: "About me",
       navExperience: "Experience",
       navTechnologies: "Technologies",
@@ -109,7 +109,7 @@ export const textAll: tTextAll = {
       title: "TECHNOLOGIES",
     },
     contact: {
-      title: "Let's Build Something",
+      title: "Let's Build Something!",
     },
     btnScreenshot: {
       text: "Screenshots",
