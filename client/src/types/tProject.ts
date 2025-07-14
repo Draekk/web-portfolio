@@ -17,3 +17,13 @@ export type tProject = {
 export type tDetailedProject = tProject & {
   technologies: tTechnology[];
 };
+
+export type tProjectData = {
+  id: number;
+  name: string;
+  description: string;
+  creationDate: string | Date;
+  url: string;
+  screenshots: tScreenshot[];
+  technologyIds: number[];
+};
