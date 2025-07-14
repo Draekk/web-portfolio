@@ -6,7 +6,7 @@ import Technologies from "./components/technologies/Technologies";
 import ContactCard from "./components/contact/ContactCard";
 import MailForm from "./components/contact/MailForm";
 import "./App.css";
-import { textAll } from "./types/tTextLang";
+import { textAll } from "./data/lang-data";
 
 function App() {
   const [navPopUp, setNavPopUp] = useState(false);
