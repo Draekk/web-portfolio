@@ -1,19 +1,21 @@
 import "./techViewer.css";
-import { tDetailedTechnology } from "../../types/tTechnology";
 import ProjectSummary from "./projects/ProjectSummary";
 import { tBtnScreenshot } from "../../types/tTextLang";
+import { tTechnologyWithProjects, useData } from "../../hooks/useData";
 
 type TTechViewerProps = tBtnScreenshot & {
-  tech: tDetailedTechnology;
+  tech: tTechnologyWithProjects;
 };
 
 function TechViewer({ tech, text, closeText }: TTechViewerProps) {
+  const { getProjectsWithTechnologies } = useData();
+
   return (
     <div className="w-full h-full overflow-hidden">
       <h1 className="uppercase pt-6 pb-3 font-black">{tech.name}</h1>
       <div className="overflow-y-scroll scroll-smooth grid grid-cols-1 gap-5 h-[85%] scroll-hidden">
         {tech.projects.length > 0 ? (
-          tech.projects.map((p) => (
+          getProjectsWithTechnologies(tech.projects).map((p) => (
             <ProjectSummary
               key={p.id}
               project={p}

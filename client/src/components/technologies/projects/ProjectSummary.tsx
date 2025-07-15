@@ -1,11 +1,11 @@
 import "./projectSummary.css";
 import { useState } from "react";
-import { tDetailedProject } from "../../../types/tProject";
 import ScreenshotViewer from "./ScreenshotViewer";
 import { tBtnScreenshot } from "../../../types/tTextLang";
+import { tProjectWithTechnologies } from "../../../hooks/useData";
 
 type tProjectSummaryProps = tBtnScreenshot & {
-  project: tDetailedProject;
+  project: tProjectWithTechnologies;
 };
 
 function ProjectSummary({ project, text, closeText }: tProjectSummaryProps) {

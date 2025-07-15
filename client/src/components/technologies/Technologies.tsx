@@ -1,15 +1,15 @@
 import "./technologies.css";
 import Technology from "./Technology";
-import { useTechnology } from "../../hooks/useTechnology";
 import TechViewer from "./TechViewer";
 import { tBtnScreenshot, tTechnologies } from "../../types/tTextLang";
+import { useTechnologyService } from "../../hooks/useTechnologyService";
 
 type tTechnologiesProps = tTechnologies & {
   btnScreenshot: tBtnScreenshot;
 };
 
 function Technologies({ title, btnScreenshot }: tTechnologiesProps) {
-  const { techList, tech, selectTech, toggleTech } = useTechnology();
+  const { techList, tech, selectTech, toggleTech } = useTechnologyService();
 
   return (
     <section
